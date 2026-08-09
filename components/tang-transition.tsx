@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { useLenis } from "@/components/lenis-provider";
+import { useEffect, useState } from "react";
 import {
   BaoxiangFlower,
   DaggerAxe,
@@ -9,27 +8,31 @@ import {
 } from "@/components/ornaments";
 import AsciiFire from "@/components/originkit/ui/ascii-flame";
 
+export type TransitionMode = "baoxiang" | "axe" | "ribbon";
+
 type Phase = "idle" | "opening" | "switching" | "closing";
 
-const OPEN_MS = 880;
-const SWITCH_HOLD_MS = 1000;
-const CLOSE_MS = 560;
+const OPEN_MS = 900;
+const SWITCH_HOLD_MS = 700;
+const CLOSE_MS = 620;
 
 /**
- * 唐代风格点击转场：宝相花纹旋转展开 + 敦煌飘带 + 兵戈 + 火焰。
- * 监听 window 上的 monumoir:tang-go 事件（detail.target = CSS 选择器），
- * 覆盖期间完成滚动，实现「点击 → 转场 → 新章节」而非直接滑动。
+ * 唐代风格点击转场（Deck 屏切换用）。
+ * 监听 window 上的 monumoir:tang-go 事件：
+ *   detail = { mode: "baoxiang"|"axe"|"ribbon", index?: number, target?: string }
+ * - 提供 index：Deck 屏切换模式——覆盖期间派发 monumoir:tang-switched（含 index），由 Deck 切换当前屏
+ * - 提供 target：旧式滚动模式——覆盖期间滚动到锚点
  */
 export function TangTransition() {
-  const { scrollTo } = useLenis();
   const [phase, setPhase] = useState<Phase>("idle");
-  const [target, setTarget] = useState<string | null>(null);
+  const [mode, setMode] = useState<TransitionMode>("baoxiang");
+  const [pending, setPending] = useState<{ index?: number; target?: string } | null>(null);
 
   useEffect(() => {
     const onGo = (e: Event) => {
-      const detail = (e as CustomEvent<{ target?: string }>).detail;
-      if (!detail?.target) return;
-      setTarget(detail.target);
+      const d = (e as CustomEvent<{ mode?: TransitionMode; index?: number; target?: string }>).detail || {};
+      setMode(d.mode || "baoxiang");
+      setPending({ index: d.index, target: d.target });
       setPhase("opening");
     };
     window.addEventListener("monumoir:tang-go", onGo);
@@ -45,10 +48,16 @@ export function TangTransition() {
     }
     if (phase === "switching") {
       const t = window.setTimeout(() => {
-        // 遮罩覆盖期间执行滚动（用户看不到滑动过程，只看到转场）
-        const el = target ? document.querySelector(target) : null;
-        if (el) scrollTo(el as HTMLElement, { duration: 1.1, force: true });
-        else window.scrollTo({ top: 0, behavior: "smooth" });
+        if (pending?.index !== undefined) {
+          // Deck 模式：通知 Deck 切换当前屏
+          window.dispatchEvent(
+            new CustomEvent("monumoir:tang-switched", { detail: { index: pending.index } })
+          );
+        } else if (pending?.target) {
+          const el = document.querySelector(pending.target);
+          if (el) (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
+          else window.scrollTo({ top: 0, behavior: "smooth" });
+        }
         setPhase("closing");
       }, SWITCH_HOLD_MS);
       return () => window.clearTimeout(t);
@@ -56,16 +65,19 @@ export function TangTransition() {
     if (phase === "closing") {
       const t = window.setTimeout(() => {
         setPhase("idle");
-        setTarget(null);
+        setPending(null);
       }, CLOSE_MS);
       return () => window.clearTimeout(t);
     }
-  }, [phase, target, scrollTo]);
+  }, [phase, pending]);
 
   if (!active) return null;
 
   const expanding = phase === "opening";
   const hiding = phase === "closing";
+  const shown = !expanding && !hiding;
+
+  const ribbonOpacity = hiding ? 0 : expanding ? 0 : 1;
 
   return (
     <div
@@ -73,7 +85,7 @@ export function TangTransition() {
       aria-hidden="true"
       style={{ pointerEvents: phase === "switching" ? "auto" : "none" }}
     >
-      {/* 深色遮罩 */}
+      {/* 深色幕布 */}
       <div
         className={`absolute inset-0 bg-[#101010] transition-opacity duration-500 ${
           expanding ? "opacity-0" : "opacity-100"
@@ -86,62 +98,90 @@ export function TangTransition() {
         style={{
           opacity: hiding ? 0 : 1,
           background:
-            "radial-gradient(ellipse at 50% 45%, rgba(139,26,26,0.28) 0%, transparent 60%)",
+            "radial-gradient(ellipse at 50% 45%, rgba(139,26,26,0.30) 0%, transparent 62%)",
         }}
       />
 
-      {/* 宝相花纹：旋转展开 / 收起 */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-          style={{
-            transform: hiding
-              ? "scale(0) rotate(0deg)"
-              : expanding
-                ? "scale(0.15) rotate(-90deg) translateY(20px)"
-                : "scale(1) rotate(180deg)",
-            opacity: hiding ? 0 : expanding ? 0 : 1,
-          }}
-        >
-          <BaoxiangFlower className="h-[78vmin] w-[78vmin] text-[#b8860b]/90 drop-shadow-[0_0_40px_rgba(184,134,11,0.35)]" />
+      {/* ===== 中央转场元素（按 mode） ===== */}
+      {mode === "baoxiang" && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div
+            className="transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{
+              transform: hiding
+                ? "scale(0) rotate(0deg)"
+                : expanding
+                  ? "scale(0.12) rotate(-120deg)"
+                  : "scale(1) rotate(180deg)",
+              opacity: expanding ? 0 : hiding ? 0 : 1,
+            }}
+          >
+            <BaoxiangFlower className="h-[80vmin] w-[80vmin] text-[#b8860b]/95 drop-shadow-[0_0_50px_rgba(184,134,11,0.4)]" />
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* 敦煌飘带（顶部 / 底部） */}
-      <div
-        className="absolute inset-x-0 top-[12%] flex justify-center transition-opacity duration-700"
-        style={{ opacity: hiding ? 0 : 1 }}
-      >
-        <DunhuangRibbon className="h-8 w-56 text-[#c4a86b]/70 md:w-96" />
-      </div>
-      <div
-        className="absolute inset-x-0 bottom-[14%] flex justify-center rotate-180 transition-opacity duration-700"
-        style={{ opacity: hiding ? 0 : 1 }}
-      >
-        <DunhuangRibbon className="h-8 w-56 text-[#c4a86b]/60 md:w-96" />
-      </div>
+      {mode === "axe" && (
+        <div className="absolute inset-0">
+          {/* 左右两戈交叉合拢 / 分开 */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div
+              className="flex items-center justify-center gap-10 md:gap-16 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={{
+                transform: expanding
+                  ? "translateX(-120px) scale(0.7) rotate(-12deg)"
+                  : hiding
+                    ? "translateX(120px) scale(0.7) rotate(12deg)"
+                    : "translateX(0) scale(1) rotate(0deg)",
+                opacity: expanding ? 0 : hiding ? 0 : 1,
+              }}
+            >
+              <DaggerAxe className="h-24 w-24 text-[#8b1a1a] drop-shadow-[0_0_24px_rgba(139,26,26,0.5)] md:h-32 md:w-32" />
+              <DaggerAxe className="h-24 w-24 scale-x-[-1] text-[#c44d4d] drop-shadow-[0_0_24px_rgba(196,77,77,0.5)] md:h-32 md:w-32" />
+            </div>
+          </div>
+          {/* 兵戈光带 */}
+          <div
+            className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-[#8b1a1a]/80 to-transparent transition-opacity duration-700"
+            style={{ opacity: shown ? 1 : 0 }}
+          />
+        </div>
+      )}
 
-      {/* 兵戈（两侧交叉） */}
-      <div
-        className="absolute left-[6%] top-1/2 -translate-y-1/2 -rotate-12 transition-opacity duration-700"
-        style={{ opacity: hiding ? 0 : 0.8 }}
-      >
-        <DaggerAxe className="h-16 w-16 text-[#8b1a1a] md:h-20 md:w-20" />
-      </div>
-      <div
-        className="absolute right-[6%] top-1/2 -translate-y-1/2 rotate-12 scale-x-[-1] transition-opacity duration-700"
-        style={{ opacity: hiding ? 0 : 0.8 }}
-      >
-        <DaggerAxe className="h-16 w-16 text-[#8b1a1a] md:h-20 md:w-20" />
-      </div>
+      {mode === "ribbon" && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
+          <div
+            className="transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{
+              transform: expanding ? "translateY(-60px) scaleX(0.2)" : "translateY(0) scaleX(1)",
+              opacity: ribbonOpacity,
+            }}
+          >
+            <DunhuangRibbon className="h-12 w-80 text-[#c4a86b]/90 md:h-16 md:w-[36rem]" />
+          </div>
+          <div
+            className="transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{
+              transform: expanding ? "translateY(60px) scaleX(0.2)" : "translateY(0) scaleX(1)",
+              opacity: ribbonOpacity,
+            }}
+          >
+            <DunhuangRibbon className="h-12 w-80 rotate-180 text-[#c4a86b]/70 md:h-16 md:w-[36rem]" />
+          </div>
+          {/* 飘带间的小宝相花点缀 */}
+          <BaoxiangFlower
+            className={`h-24 w-24 text-[#b8860b] transition-opacity duration-700 ${shown ? "opacity-80" : "opacity-0"}`}
+          />
+        </div>
+      )}
 
-      {/* 火焰（底部） */}
-      <div className="absolute inset-x-0 bottom-0 h-44 opacity-80">
+      {/* 底部火焰 */}
+      <div className="absolute inset-x-0 bottom-0 h-40 opacity-75">
         <AsciiFire
           palette="custom"
           shades={["#5a1603", "#8f2404", "#c23e07", "#f0650d", "#ffa040", "#ffd98f"]}
           sparkColor="#ffd98f"
-          intensity={90}
+          intensity={85}
           windDirection="right"
           windForce={8}
           decay={16}
@@ -154,12 +194,12 @@ export function TangTransition() {
         />
       </div>
 
-      {/* 转场文字（中央章节提示由触发方提供，此处为金色小字装饰） */}
+      {/* 中央文字提示 */}
       <div
-        className="absolute inset-x-0 bottom-[26%] flex justify-center transition-opacity duration-500"
-        style={{ opacity: hiding || expanding ? 0 : 1 }}
+        className="absolute inset-x-0 bottom-[24%] flex justify-center transition-opacity duration-500"
+        style={{ opacity: shown ? 1 : 0 }}
       >
-        <span className="font-heading text-sm tracking-[0.6em] text-[#f7f4ec]/80">
+        <span className="font-heading text-sm tracking-[0.6em] text-[#f7f4ec]/85">
           盛 世 之 后
         </span>
       </div>
@@ -167,8 +207,6 @@ export function TangTransition() {
   );
 }
 
-export function goWithTransition(target: string) {
-  window.dispatchEvent(
-    new CustomEvent("monumoir:tang-go", { detail: { target } })
-  );
+export function goWithTransition(opts: { mode?: TransitionMode; index?: number; target?: string }) {
+  window.dispatchEvent(new CustomEvent("monumoir:tang-go", { detail: opts }));
 }

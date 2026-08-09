@@ -1,39 +1,29 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLenis } from "@/components/lenis-provider";
-import { goWithTransition } from "@/components/tang-transition";
+import { useDeck } from "@/components/deck";
 import { ArrowUpIcon, CloseIcon, MenuIcon } from "@/components/icons";
 import FlowingMenu from "@/components/flowing-menu/FlowingMenu";
 import { BASE_PATH } from "@/lib/data";
 
 const MENU_ITEMS = [
-  { num: "01", label: "研究问题", href: "#about", img: "/img/menu/menu-hero-tornado.png" },
-  { num: "02", label: "数据分析", href: "#analysis", img: "/img/menu/menu-sticker-cards.png" },
-  { num: "03", label: "四阶段演变", href: "#timeline", img: "/img/menu/menu-flame-timeline.jpg" },
-  { num: "04", label: "未完成的中兴", href: "#zhongxing", img: "/img/menu/menu-palace-zhongxing.png" },
-  { num: "05", label: "从战争到宫闱", href: "#palace", img: "/img/menu/menu-palace-section.png" },
-  { num: "06", label: "文本探索器", href: "#texts", img: "/img/menu/menu-question-plaque.jpg" },
-  { num: "07", label: "研究方法", href: "#method", img: "/img/menu/menu-method.jpg" },
-  { num: "08", label: "团队", href: "#team", img: "/img/menu/menu-characters.png" },
+  { num: "01", label: "研究问题", index: 1, img: "/img/menu/menu-hero-tornado.png" },
+  { num: "02", label: "情感分析", index: 2, img: "/img/menu/menu-sticker-cards.png" },
+  { num: "03", label: "主题与话语", index: 3, img: "/img/menu/menu-flame-timeline.jpg" },
+  { num: "04", label: "四阶段演变", index: 4, img: "/img/menu/menu-palace-zhongxing.png" },
+  { num: "05", label: "未完成的中兴", index: 5, img: "/img/menu/menu-palace-section.png" },
+  { num: "06", label: "从战争到宫闱", index: 6, img: "/img/menu/menu-question-plaque.jpg" },
+  { num: "07", label: "文本探索器", index: 7, img: "/img/menu/menu-method.jpg" },
+  { num: "08", label: "研究方法", index: 8, img: "/img/menu/menu-characters.png" },
+  { num: "09", label: "结语", index: 9, img: "/img/menu/menu-characters.png" },
 ];
 
 export function BottomNav() {
-  const { scrollTo } = useLenis();
+  const { index, goTo, next, prev } = useDeck();
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => {
-      // 时间轴（03）为深色区，滚动接近时底部导航切换为深色样式
-      const timeline = document.getElementById("timeline");
-      const top = timeline?.offsetTop ?? Infinity;
-      setDark(window.scrollY > top - window.innerHeight * 0.6);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // 深色屏：四阶段演变(4)、结语(9) 为深色，导航切换深色样式
+  const dark = index === 4 || index === 9;
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -42,10 +32,9 @@ export function BottomNav() {
     };
   }, [open]);
 
-  const go = (href: string) => {
+  const go = (i: number, mode: "baoxiang" | "axe" | "ribbon") => {
     setOpen(false);
-    // 点击转场：播放唐代纹样转场动画，覆盖期间完成滚动
-    goWithTransition(href);
+    goTo(i, mode);
   };
 
   const barStyle = open
@@ -91,7 +80,7 @@ export function BottomNav() {
           <div className="relative z-10 min-h-0 flex-1">
             <FlowingMenu
               items={MENU_ITEMS.map((m) => ({
-                link: m.href,
+                link: `#screen-${m.index}`,
                 text: m.label,
                 image: `${BASE_PATH}${m.img}`,
                 hint: m.num,
@@ -102,7 +91,7 @@ export function BottomNav() {
               marqueeBgColor="#faf7f2"
               marqueeTextColor="#2c2416"
               borderColor="rgba(255,255,255,0.12)"
-              onNavigate={(item) => go(item.link)}
+              onNavigate={(item) => { const found = MENU_ITEMS.find((m) => `#screen-${m.index}` === item.link); go(found ? found.index : 0, "ribbon"); }}
             />
           </div>
 
@@ -122,19 +111,22 @@ export function BottomNav() {
       >
         <button
           type="button"
-          aria-label="回到顶部"
-          onClick={() => go("#about")}
+          aria-label="上一屏"
+          onClick={() => prev("axe")}
           className={`relative z-10 flex w-fit items-center justify-center justify-self-start rounded-full p-2 transition-colors ${
             open || dark ? "text-white/70 hover:bg-white/10" : "text-ink-soft hover:bg-black/5"
           }`}
         >
           <ArrowUpIcon className="h-5 w-5 md:h-6 md:w-6" />
         </button>
-        <span
+        <button
+          type="button"
+          aria-label="回到封面"
+          onClick={() => go(0, "baoxiang")}
           className={`relative z-10 justify-self-center font-heading text-2xl font-light tracking-wide md:text-3xl ${wordmark}`}
         >
           盛世之后
-        </span>
+        </button>
         <button
           type="button"
           aria-label={open ? "关闭菜单" : "打开菜单"}

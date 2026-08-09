@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLenis } from "@/components/lenis-provider";
+import { useDeck } from "@/components/deck";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ArrowDownIcon } from "@/components/icons";
 import { BrushTitle } from "@/components/originkit/brush-title";
@@ -15,27 +15,18 @@ const HERO_STATS = [
   { number: "171", label: "情感词" },
 ];
 
-/** 固定于首屏下方的「向下探索」按钮（Monumoir Wake-a-Statue 风格） */
-function ScrollHintButton() {
-  const { scrollTo } = useLenis();
-  const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setHidden(window.scrollY > window.innerHeight * 0.6);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
+/** 首屏「进入研究」按钮：点击触发宝相花转场进入下一屏 */
+function EnterButton() {
+  const { next } = useDeck();
   return (
     <button
       type="button"
-      aria-label="向下探索"
-      onClick={() => scrollTo(window.innerHeight, { duration: 1.6 })}
-      className="fixed inset-x-0 bottom-[84px] z-[12] mx-auto flex w-fit cursor-pointer flex-col items-center gap-1 border-0 bg-transparent p-2 transition-opacity duration-500 ease-out hover:opacity-80 lg:bottom-[120px]"
-      style={{ opacity: hidden ? 0 : 1, pointerEvents: hidden ? "none" : "auto" }}
+      aria-label="进入研究"
+      onClick={() => next("baoxiang")}
+      className="group absolute inset-x-0 bottom-[96px] z-[12] mx-auto flex w-fit cursor-pointer flex-col items-center gap-1.5 border-0 bg-transparent p-2 transition-opacity duration-500 ease-out hover:opacity-90"
     >
-      <span className="text-xs font-light tracking-[0.2em] text-white/70">向下探索</span>
-      <ArrowDownIcon className="h-4 w-4 text-white/70 animate-bounce-soft" />
+      <span className="text-xs font-light tracking-[0.25em] text-white/75">进入研究</span>
+      <ArrowDownIcon className="h-4 w-4 text-white/75 animate-bounce-soft transition-transform group-hover:translate-y-0.5" />
     </button>
   );
 }
@@ -142,7 +133,7 @@ export function Hero() {
         </ScrollReveal>
       </div>
 
-      <ScrollHintButton />
+      <EnterButton />
     </header>
   );
 }
