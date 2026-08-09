@@ -1,143 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useDeck } from "@/components/deck";
-import { ArrowUpIcon, CloseIcon, MenuIcon } from "@/components/icons";
-import FlowingMenu from "@/components/flowing-menu/FlowingMenu";
-import { BASE_PATH } from "@/lib/data";
+import { ArrowUpIcon, ArrowDownIcon } from "@/components/icons";
 
-const MENU_ITEMS = [
-  { num: "01", label: "研究问题", index: 1, img: "/img/menu/menu-hero-tornado.png" },
-  { num: "02", label: "情感分析", index: 2, img: "/img/menu/menu-sticker-cards.png" },
-  { num: "03", label: "主题与话语", index: 3, img: "/img/menu/menu-flame-timeline.jpg" },
-  { num: "04", label: "四阶段演变", index: 4, img: "/img/menu/menu-palace-zhongxing.png" },
-  { num: "05", label: "未完成的中兴", index: 5, img: "/img/menu/menu-palace-section.png" },
-  { num: "06", label: "从战争到宫闱", index: 6, img: "/img/menu/menu-question-plaque.jpg" },
-  { num: "07", label: "文本探索器", index: 7, img: "/img/menu/menu-method.jpg" },
-  { num: "08", label: "研究方法", index: 8, img: "/img/menu/menu-characters.png" },
-  { num: "09", label: "结语", index: 9, img: "/img/menu/menu-characters.png" },
-];
-
+/**
+ * 底部导航：上一屏 / 页码 / 下一屏（清晰图标跳转）。
+ * 「盛世之后」字标与全屏菜单已移至顶部顶栏（TopBar）。
+ */
 export function BottomNav() {
-  const { index, goTo, next, prev } = useDeck();
-  const [open, setOpen] = useState(false);
-
-  // 深色屏：四阶段演变(4)、结语(9) 为深色，导航切换深色样式
+  const { index, total, next, prev } = useDeck();
+  // 深色屏：四阶段演变(4)、结语(9)
   const dark = index === 4 || index === 9;
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  const go = (i: number, mode: "baoxiang" | "axe" | "ribbon") => {
-    setOpen(false);
-    goTo(i, mode);
-  };
-
-  const barStyle = open
-    ? "bg-[#101010]"
-    : dark
-      ? "bg-[#101010]/85 text-white"
-      : "bg-paper/80 text-ink";
-  const wordmark = open ? "text-white" : dark ? "text-white" : "text-ink";
+  const accent = dark ? "text-white/70 hover:bg-white/10" : "text-ink-soft hover:bg-black/5";
+  const page = dark ? "text-white/60" : "text-ink-soft";
 
   return (
-    <>
-      {/* 全屏目录（FlowingMenu 动效） */}
-      {open && (
-        <div
-          className="fixed inset-0 z-40 flex flex-col bg-[#101010] text-white"
-          role="dialog"
-          aria-modal="true"
-          aria-label="网站导航"
-        >
-          <div
-            className="pointer-events-none absolute inset-0 opacity-50"
-            style={{
-              background:
-                "radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.18) 0%, transparent 55%)",
-            }}
-            aria-hidden="true"
-          />
-          <div className="relative z-10 flex h-auto items-center justify-between px-5 py-4 md:px-8">
-            <span className="text-xs tracking-wider text-white/40">
-              盛世之后 · 观念流变
-            </span>
-            <span className="font-heading text-lg text-white/70">Monumoir × 安史之乱</span>
-            <button
-              type="button"
-              aria-label="关闭菜单"
-              onClick={() => setOpen(false)}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10"
-            >
-              <CloseIcon className="h-5 w-5" />
-            </button>
-          </div>
-
-          <div className="relative z-10 min-h-0 flex-1">
-            <FlowingMenu
-              items={MENU_ITEMS.map((m) => ({
-                link: `#screen-${m.index}`,
-                text: m.label,
-                image: `${BASE_PATH}${m.img}`,
-                hint: m.num,
-              }))}
-              speed={14}
-              textColor="#f7f4ec"
-              bgColor="transparent"
-              marqueeBgColor="#faf7f2"
-              marqueeTextColor="#2c2416"
-              borderColor="rgba(255,255,255,0.12)"
-              onNavigate={(item) => { const found = MENU_ITEMS.find((m) => `#screen-${m.index}` === item.link); go(found ? found.index : 0, "ribbon"); }}
-            />
-          </div>
-
-          <div className="relative z-10 flex items-center justify-center gap-6 pb-10 pt-4 text-xs text-white/40">
-            <span>IDHFUS 2026 · 赛道一</span>
-            <span>·</span>
-            <span>中国人民大学信息资源管理学院</span>
-          </div>
-        </div>
-      )}
-
-      {/* 底部导航栏（Monumoir 三列玻璃拟态） */}
-      <div
-        className={`fixed bottom-0 left-0 right-0 z-50 isolate grid grid-cols-3 items-center border-t py-1.5 px-5 backdrop-blur-xl transition-colors duration-[800ms] ease-out md:py-3 ${barStyle} ${
-          open ? "border-white/10" : "border-line/60"
-        }`}
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 isolate grid grid-cols-3 items-center border-t py-1.5 px-5 backdrop-blur-xl transition-colors duration-[800ms] ease-out md:py-2.5 ${
+        dark ? "border-white/10 bg-[#101010]/85 text-white" : "border-line/60 bg-paper/80 text-ink"
+      }`}
+    >
+      <button
+        type="button"
+        aria-label="上一屏"
+        onClick={() => prev("axe")}
+        className={`group relative z-10 flex w-fit items-center gap-1.5 justify-self-start rounded-full p-2 transition-colors ${accent}`}
       >
-        <button
-          type="button"
-          aria-label="上一屏"
-          onClick={() => prev("axe")}
-          className={`relative z-10 flex w-fit items-center justify-center justify-self-start rounded-full p-2 transition-colors ${
-            open || dark ? "text-white/70 hover:bg-white/10" : "text-ink-soft hover:bg-black/5"
-          }`}
-        >
-          <ArrowUpIcon className="h-5 w-5 md:h-6 md:w-6" />
-        </button>
-        <button
-          type="button"
-          aria-label="回到封面"
-          onClick={() => go(0, "baoxiang")}
-          className={`relative z-10 justify-self-center font-heading text-2xl font-light tracking-wide md:text-3xl ${wordmark}`}
-        >
-          盛世之后
-        </button>
-        <button
-          type="button"
-          aria-label={open ? "关闭菜单" : "打开菜单"}
-          onClick={() => setOpen((v) => !v)}
-          className={`relative z-10 flex w-fit items-center justify-center justify-self-end rounded-full p-2 transition-colors ${
-            open || dark ? "text-white hover:bg-white/10" : "text-ink hover:bg-black/5"
-          }`}
-        >
-          {open ? <CloseIcon className="h-5 w-5 md:h-6 md:w-6" /> : <MenuIcon className="h-5 w-5 md:h-6 md:w-6" />}
-        </button>
-      </div>
-    </>
+        <ArrowUpIcon className="h-4 w-4 md:h-5 md:w-5" />
+        <span className="hidden text-xs sm:inline">上一屏</span>
+      </button>
+
+      <span className={`relative z-10 justify-self-center font-body text-xs tabular-nums tracking-wider ${page}`}>
+        {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+      </span>
+
+      <button
+        type="button"
+        aria-label="下一屏"
+        onClick={() => next("baoxiang")}
+        className={`group relative z-10 flex w-fit items-center gap-1.5 justify-self-end rounded-full p-2 transition-colors ${accent}`}
+      >
+        <span className="hidden text-xs sm:inline">下一屏</span>
+        <ArrowDownIcon className="h-4 w-4 md:h-5 md:w-5" />
+      </button>
+    </div>
   );
 }

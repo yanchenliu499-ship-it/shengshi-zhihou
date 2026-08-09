@@ -1,4 +1,5 @@
 import { BottomNav } from "@/components/bottom-nav";
+import { TopBar } from "@/components/top-bar";
 import { Deck, DeckProvider, Screen } from "@/components/deck";
 import { Hero } from "@/components/hero";
 import { TangTransition } from "@/components/tang-transition";
@@ -252,6 +253,7 @@ export default function HomePage() {
         </Screen>
       </Deck>
 
+      <TopBar />
       <BottomNav />
       <TangTransition />
     </DeckProvider>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   BaoxiangFlower,
   DaggerAxe,
@@ -27,46 +27,64 @@ export function TangTransition() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [mode, setMode] = useState<TransitionMode>("baoxiang");
   const [pending, setPending] = useState<{ index?: number; target?: string } | null>(null);
+  const timersRef = useRef<number[]>([]);
+
+  const clearTimers = () => {
+    timersRef.current.forEach((t) => window.clearTimeout(t));
+    timersRef.current = [];
+  };
+  const pushTimer = (t: number) => {
+    timersRef.current.push(t);
+    return t;
+  };
 
   useEffect(() => {
     const onGo = (e: Event) => {
       const d = (e as CustomEvent<{ mode?: TransitionMode; index?: number; target?: string }>).detail || {};
+      // 取消上一次转场的残留定时器，保证连续点击不会中断新转场
+      clearTimers();
       setMode(d.mode || "baoxiang");
       setPending({ index: d.index, target: d.target });
       setPhase("opening");
     };
     window.addEventListener("monumoir:tang-go", onGo);
-    return () => window.removeEventListener("monumoir:tang-go", onGo);
+    return () => {
+      window.removeEventListener("monumoir:tang-go", onGo);
+      clearTimers();
+    };
   }, []);
 
   const active = phase !== "idle";
 
   useEffect(() => {
     if (phase === "opening") {
-      const t = window.setTimeout(() => setPhase("switching"), OPEN_MS);
+      const t = pushTimer(window.setTimeout(() => setPhase("switching"), OPEN_MS));
       return () => window.clearTimeout(t);
     }
     if (phase === "switching") {
-      const t = window.setTimeout(() => {
-        if (pending?.index !== undefined) {
-          // Deck 模式：通知 Deck 切换当前屏
-          window.dispatchEvent(
-            new CustomEvent("monumoir:tang-switched", { detail: { index: pending.index } })
-          );
-        } else if (pending?.target) {
-          const el = document.querySelector(pending.target);
-          if (el) (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
-          else window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-        setPhase("closing");
-      }, SWITCH_HOLD_MS);
+      const t = pushTimer(
+        window.setTimeout(() => {
+          if (pending?.index !== undefined) {
+            window.dispatchEvent(
+              new CustomEvent("monumoir:tang-switched", { detail: { index: pending.index } })
+            );
+          } else if (pending?.target) {
+            const el = document.querySelector(pending.target);
+            if (el) (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
+            else window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+          setPhase("closing");
+        }, SWITCH_HOLD_MS)
+      );
       return () => window.clearTimeout(t);
     }
     if (phase === "closing") {
-      const t = window.setTimeout(() => {
-        setPhase("idle");
-        setPending(null);
-      }, CLOSE_MS);
+      const t = pushTimer(
+        window.setTimeout(() => {
+          setPhase("idle");
+          setPending(null);
+        }, CLOSE_MS)
+      );
       return () => window.clearTimeout(t);
     }
   }, [phase, pending]);

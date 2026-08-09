@@ -89,13 +89,63 @@ export function DeckProvider({ children }: { children: ReactNode }) {
 /**
  * 多屏容器：所有屏常驻 DOM（visibility 切换，保证隐藏屏中 ECharts 尺寸正常）。
  */
+function hasInternalScroll() {
+  const screen = [...document.querySelectorAll('[style*="visibility: visible"]')].find(
+    (el) => el.getBoundingClientRect().width > 100 && el.getBoundingClientRect().height > 100
+  );
+  if (!screen) return false;
+  return [...screen.querySelectorAll("[class*='overflow-y-auto']")].some(
+    (el) => el.scrollHeight > el.clientHeight + 8
+  );
+}
+
 export function Deck({ children }: { children: ReactNode }) {
-  const { index, registerTotal } = useDeck();
+  const { index, registerTotal, next, prev } = useDeck();
   const screens = Children.toArray(children);
 
   useEffect(() => {
     registerTotal(screens.length);
   }, [screens.length, registerTotal]);
+
+  // 滚轮 / 触摸滑动切换界面
+  useEffect(() => {
+    let touchY = 0;
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) < 24) return;
+      // 屏内可滚动容器未到边界 → 让内部滚动，不切屏
+      const t = e.target as HTMLElement | null;
+      const scroller = t?.closest
+        ? (t.closest("[class*='overflow-y-auto']") as HTMLElement | null)
+        : null;
+      if (scroller && scroller.scrollHeight > scroller.clientHeight + 8) {
+        const atBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 8;
+        const atTop = scroller.scrollTop <= 8;
+        if (e.deltaY > 0 && !atBottom) return;
+        if (e.deltaY < 0 && !atTop) return;
+      }
+      if (e.deltaY > 0) next("ribbon");
+      else prev("axe");
+    };
+    const onTouchStart = (e: TouchEvent) => {
+      touchY = e.touches[0].clientY;
+    };
+    const onTouchEnd = (e: TouchEvent) => {
+      const dy = e.changedTouches[0].clientY - touchY;
+      if (Math.abs(dy) < 60) return;
+      // 屏内有可滚动内容时，触摸留给内部滚动（避免误切屏）
+      if (hasInternalScroll()) return;
+      if (dy < 0) next("ribbon");
+      else prev("axe");
+    };
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [next, prev]);
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#101010]">
