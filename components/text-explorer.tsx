@@ -264,12 +264,13 @@ export function TextExplorer() {
 
       {/* 右侧弹窗遮罩 */}
       {open && (
-        <div
-          className="fixed inset-0 z-50 flex justify-end"
-          onClick={(e) => { if (e.target === e.currentTarget) closePanel(); }}
-        >
-          {/* 半透明遮罩 */}
-          <div className="absolute inset-0 bg-[rgba(28,35,48,0.45)] backdrop-blur-[2px]" />
+        <div className="fixed inset-0 z-[70] flex justify-end">
+          {/* 半透明遮罩：点击空白处关闭 */}
+          <div
+            className="absolute inset-0 bg-[rgba(28,35,48,0.45)] backdrop-blur-[2px]"
+            onClick={closePanel}
+            aria-hidden="true"
+          />
 
           {/* 弹窗面板 */}
           <div className="relative z-10 flex h-full w-full max-w-[640px] flex-col bg-[#FDFCFA] shadow-[-8px_0_40px_rgba(53,71,95,0.15)] animate-slide-in-right">
@@ -280,8 +281,9 @@ export function TextExplorer() {
             <button
               type="button"
               onClick={closePanel}
-              className="absolute right-4 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full text-[#AA967E] transition-colors hover:bg-[rgba(121,23,22,0.08)] hover:text-[#791716]"
-              aria-label="关闭"
+              className="absolute right-4 top-3 z-[40] flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-[rgba(170,150,126,0.4)] bg-[#FDFCFA] text-[#791716] shadow-sm transition-colors hover:bg-[rgba(121,23,22,0.08)] hover:text-[#791716]"
+              aria-label="关闭面板"
+              title="关闭面板（Esc）"
             >
               <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M3 3l10 10M13 3L3 13" />
@@ -374,6 +376,17 @@ export function TextExplorer() {
               )}
             </div>
 
+            {/* 收起 / 返回 */}
+            <div className="flex shrink-0 items-center justify-center border-t border-[rgba(170,150,126,0.25)] px-5 py-3">
+              <button
+                type="button"
+                onClick={closePanel}
+                className="cursor-pointer rounded-full border border-[#791716]/30 px-5 py-2 text-xs font-medium text-[#791716] transition-colors hover:bg-[#791716]/10"
+              >
+                收起面板 · 返回
+              </button>
+            </div>
+
             {/* 底部纹样收尾 */}
             <div className="pointer-events-none select-none" aria-hidden="true">
               <div className="mx-5 h-[1px] bg-[rgba(170,150,126,0.25)]" />
@@ -392,7 +405,7 @@ export function TextExplorer() {
       {/* 诗歌详情弹窗 */}
       {selectedPoem && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-[rgba(28,35,48,0.55)] p-4"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-[rgba(28,35,48,0.55)] p-4"
           onClick={(e) => { if (e.target === e.currentTarget) setSelectedPoem(null); }}
         >
           <div className="relative max-h-[78vh] w-full max-w-[480px] overflow-y-auto rounded border border-[rgba(170,150,126,0.35)] bg-[#FDFCFA] p-6 shadow-[-4px_8px_32px_rgba(53,71,95,0.15)]">
