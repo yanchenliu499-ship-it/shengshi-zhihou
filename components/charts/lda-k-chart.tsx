@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { EChart } from "@/components/chart";
 import { fetchJson, type LdaKData } from "@/lib/data";
 
-const PERIOD_COLORS = ["#791716", "#BF8567", "#5F2C21", "#AA967E"];
+const PERIOD_COLORS = ["#8b1a1a", "#b8860b", "#6b5e4a", "#9b8e7a"];
 
 function baseGrid() {
   return { top: 30, right: 30, bottom: 40, left: 55 };
@@ -23,22 +23,22 @@ export function LdaKChart() {
     return {
       animationDuration: 600,
       tooltip: { trigger: "axis" },
-      legend: { data: data?.periods ?? [], bottom: 0, textStyle: { color: "#5F2C21", fontSize: 10 } },
+      legend: { data: data?.periods ?? [], bottom: 0, textStyle: { color: "#6b5e4a", fontSize: 10 } },
       grid: { top: 25, right: 25, bottom: 45, left: 55 },
       xAxis: {
         type: "category",
         data: ks,
         name: "主题数 K",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#5F2C21", fontSize: 10 },
-        axisLine: { lineStyle: { color: "rgba(170,150,126,0.35)" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#6b5e4a", fontSize: 10 },
+        axisLine: { lineStyle: { color: "#e0d8c8" } },
       },
       yAxis: {
         type: "value",
         name: "困惑度 Perplexity",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#AA967E", fontSize: 10 },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#9b8e7a", fontSize: 10 },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       series: (data?.periods ?? []).map((pd, i) => ({
         name: pd,
@@ -53,8 +53,8 @@ export function LdaKChart() {
           ? {
               silent: true,
               symbol: "none",
-              label: { formatter: "K=5（现行）", color: "#35475F", fontSize: 10 },
-              data: [{ xAxis: 5, lineStyle: { color: "#35475F", type: "dashed" } }],
+              label: { formatter: "K=5（现行）", color: "#2c2416", fontSize: 10 },
+              data: [{ xAxis: 5, lineStyle: { color: "#2c2416", type: "dashed" } }],
             }
           : undefined,
       })),
@@ -66,22 +66,22 @@ export function LdaKChart() {
     return {
       animationDuration: 600,
       tooltip: { trigger: "axis", valueFormatter: (v: unknown) => Number(v).toFixed(3) },
-      legend: { data: data?.periods ?? [], bottom: 0, textStyle: { color: "#5F2C21", fontSize: 10 } },
+      legend: { data: data?.periods ?? [], bottom: 0, textStyle: { color: "#6b5e4a", fontSize: 10 } },
       grid: { top: 25, right: 25, bottom: 45, left: 55 },
       xAxis: {
         type: "category",
         data: ks,
         name: "主题数 K",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#5F2C21", fontSize: 10 },
-        axisLine: { lineStyle: { color: "rgba(170,150,126,0.35)" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#6b5e4a", fontSize: 10 },
+        axisLine: { lineStyle: { color: "#e0d8c8" } },
       },
       yAxis: {
         type: "value",
         name: "UMass Coherence",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#AA967E", fontSize: 10 },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#9b8e7a", fontSize: 10 },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       series: (data?.periods ?? []).map((pd, i) => ({
         name: pd,
@@ -96,8 +96,8 @@ export function LdaKChart() {
           ? {
               silent: true,
               symbol: "none",
-              label: { formatter: "K=5（现行）", color: "#35475F", fontSize: 10 },
-              data: [{ xAxis: 5, lineStyle: { color: "#35475F", type: "dashed" } }],
+              label: { formatter: "K=5（现行）", color: "#2c2416", fontSize: 10 },
+              data: [{ xAxis: 5, lineStyle: { color: "#2c2416", type: "dashed" } }],
             }
           : undefined,
       })),

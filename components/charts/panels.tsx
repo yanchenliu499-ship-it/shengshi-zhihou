@@ -29,7 +29,7 @@ function ExpandablePanel({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className={`rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(53,71,95,0.06)] ${open ? "panel-open" : ""}`}>
+    <div className={`rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(44,36,22,0.08)] ${open ? "panel-open" : ""}`}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -94,7 +94,7 @@ export function TopicPanel() {
                   <td className="p-2">
                     <div className="flex flex-wrap gap-1">
                       {t.core_words.map((w, wi) => (
-                        <span key={wi} className="rounded bg-[rgba(121,23,22,0.07)] px-1.5 py-0.5 text-xs text-accent">
+                        <span key={wi} className="rounded bg-[rgba(139,26,26,0.08)] px-1.5 py-0.5 text-xs text-accent">
                           {w}
                         </span>
                       ))}
@@ -119,7 +119,7 @@ export function WordPanel() {
       .catch(console.error);
   }, []);
 
-  const cls = (s: number) => (s > 0.05 ? "text-[#BF8567]" : s < -0.05 ? "text-[#791716]" : "text-[#AA967E]");
+  const cls = (s: number) => (s > 0.05 ? "text-[#b8860b]" : s < -0.05 ? "text-[#8b1a1a]" : "text-[#9b8e7a]");
   const label = (s: number) => (s > 0.05 ? "正向" : s < -0.05 ? "负向" : "中性");
 
   return (
@@ -194,7 +194,7 @@ function BubbleForce({ period, color }: { period: BubblePeriod; color: string })
             symbolSize: 4 + po.count * 1.5,
             category: 1,
             itemStyle: { color: `hsl(${200 + wi * 30},50%,60%)` },
-            label: { show: po.count >= 3, fontSize: 8, color: "#5F2C21" },
+            label: { show: po.count >= 3, fontSize: 8, color: "#6b5e4a" },
             count: po.count,
           }));
           return [wordNode, ...poets];
@@ -202,8 +202,8 @@ function BubbleForce({ period, color }: { period: BubblePeriod; color: string })
         links: period.words.slice(0, 10).flatMap((w) =>
           w.poets.slice(0, 6).map((po) => ({ source: w.word, target: `${w.word}_${po.name}` }))
         ),
-        label: { show: true, position: "right", fontSize: 9, color: "#35475F" },
-        lineStyle: { color: "rgba(170,150,126,0.35)", curveness: 0.2, opacity: 0.5 },
+        label: { show: true, position: "right", fontSize: 9, color: "#2c2416" },
+        lineStyle: { color: "#e0d8c8", curveness: 0.2, opacity: 0.5 },
         emphasis: { focus: "adjacency", lineStyle: { width: 2, opacity: 0.8 } },
       },
     ],

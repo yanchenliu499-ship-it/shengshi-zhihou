@@ -1,6 +1,6 @@
 /* ============================================================
  * 装饰组件集 — 唐代学术风纹样（水墨山峦 / 祥云 / 朱砂印 / 回纹）
- * 全部为内联 SVG，配色沿用站点色板（绛红 #791716、赭石 #BF8567、黛蓝 #35475F）
+ * 全部为内联 SVG，配色沿用站点色板（朱砂红 #8b1a1a、金 #b8860b、墨色）
  * ============================================================ */
 
 /* ---------- 水墨山峦剪影（Hero 底部装饰） ---------- */
@@ -15,20 +15,20 @@ export function MountainScene({ className = "" }: { className?: string }) {
       {/* 远山（最淡） */}
       <path
         d="M0 240 L0 150 L120 96 L250 150 L380 80 L520 150 L660 110 L800 160 L940 90 L1080 150 L1240 120 L1440 170 L1440 240 Z"
-        fill="rgba(191,133,103,0.08)"
+        fill="rgba(184,134,11,0.10)"
       />
       {/* 中景山 */}
       <path
         d="M0 240 L0 185 L160 130 L300 180 L470 120 L640 185 L820 140 L1000 190 L1180 135 L1360 185 L1440 160 L1440 240 Z"
-        fill="rgba(53,71,95,0.24)"
+        fill="rgba(44,36,22,0.28)"
       />
       {/* 近景山（最实） */}
       <path
         d="M0 240 L0 205 L180 160 L360 210 L560 165 L760 215 L980 175 L1180 215 L1360 180 L1440 205 L1440 240 Z"
-        fill="rgba(28,35,48,0.50)"
+        fill="rgba(16,16,16,0.55)"
       />
       {/* 一轮淡月 */}
-      <circle cx="1210" cy="60" r="26" fill="rgba(191,133,103,0.14)" />
+      <circle cx="1210" cy="60" r="26" fill="rgba(184,134,11,0.18)" />
     </svg>
   );
 }
@@ -72,7 +72,7 @@ export function SealStamp({
   className?: string;
   tone?: "accent" | "gold";
 }) {
-  const fill = tone === "gold" ? "#BF8567" : "#791716";
+  const fill = tone === "gold" ? "#b8860b" : "#8b1a1a";
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
       {/* 印章外框 */}
@@ -120,7 +120,7 @@ export function FrettMark({ className = "" }: { className?: string }) {
 
 /* ---------- 如意分隔纹（章节分隔线） ---------- */
 export function DividerOrnament({ className = "", dark = false }: { className?: string; dark?: boolean }) {
-  const c = dark ? "rgba(255,255,255,0.35)" : "rgba(121,23,22,0.45)";
+  const c = dark ? "rgba(255,255,255,0.35)" : "rgba(139,26,26,0.55)";
   return (
     <svg viewBox="0 0 200 16" className={className} aria-hidden="true">
       <line x1="0" y1="8" x2="76" y2="8" stroke={c} strokeWidth="1" />
@@ -217,7 +217,7 @@ export function ArchaeologyIcon({ className = "" }: { className?: string }) {
 
 /* ---------- 金色卷草纹带（图1：金色唐风纹样） ---------- */
 export function VineBand({ className = "", tone = "gold" }: { className?: string; tone?: "gold" | "faint" }) {
-  const stroke = tone === "gold" ? "#BF8567" : "rgba(191,133,103,0.5)";
+  const stroke = tone === "gold" ? "#b8860b" : "rgba(184,134,11,0.5)";
   return (
     <svg viewBox="0 0 220 20" fill="none" className={className} aria-hidden="true">
       <line x1="0" y1="4" x2="220" y2="4" stroke={stroke} strokeWidth="0.8" opacity="0.6" />

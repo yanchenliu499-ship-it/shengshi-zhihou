@@ -3,16 +3,18 @@
 import { useEffect, useState } from "react";
 import { useLenis } from "@/components/lenis-provider";
 import { ArrowUpIcon, CloseIcon, MenuIcon } from "@/components/icons";
+import FlowingMenu from "@/components/flowing-menu/FlowingMenu";
+import { BASE_PATH } from "@/lib/data";
 
 const MENU_ITEMS = [
-  { num: "01", label: "研究问题", href: "#about" },
-  { num: "02", label: "数据分析", href: "#analysis" },
-  { num: "03", label: "四阶段演变", href: "#timeline" },
-  { num: "04", label: "未完成的中兴", href: "#zhongxing" },
-  { num: "05", label: "从战争到宫闱", href: "#palace" },
-  { num: "06", label: "文本探索器", href: "#texts" },
-  { num: "07", label: "研究方法", href: "#method" },
-  { num: "08", label: "团队", href: "#team" },
+  { num: "01", label: "研究问题", href: "#about", img: "/img/menu/menu-hero-tornado.png" },
+  { num: "02", label: "数据分析", href: "#analysis", img: "/img/menu/menu-sticker-cards.png" },
+  { num: "03", label: "四阶段演变", href: "#timeline", img: "/img/menu/menu-flame-timeline.jpg" },
+  { num: "04", label: "未完成的中兴", href: "#zhongxing", img: "/img/menu/menu-palace-zhongxing.png" },
+  { num: "05", label: "从战争到宫闱", href: "#palace", img: "/img/menu/menu-palace-section.png" },
+  { num: "06", label: "文本探索器", href: "#texts", img: "/img/menu/menu-question-plaque.jpg" },
+  { num: "07", label: "研究方法", href: "#method", img: "/img/menu/menu-method.jpg" },
+  { num: "08", label: "团队", href: "#team", img: "/img/menu/menu-characters.png" },
 ];
 
 export function BottomNav() {
@@ -47,18 +49,18 @@ export function BottomNav() {
   };
 
   const barStyle = open
-    ? "bg-[#1C2330]"
+    ? "bg-[#101010]"
     : dark
-      ? "bg-[#1C2330]/85 text-white"
-      : "bg-[#FDFCFA]/80 text-ink";
+      ? "bg-[#101010]/85 text-white"
+      : "bg-paper/80 text-ink";
   const wordmark = open ? "text-white" : dark ? "text-white" : "text-ink";
 
   return (
     <>
-      {/* 全屏菜单遮罩 */}
+      {/* 全屏目录（FlowingMenu 动效） */}
       {open && (
         <div
-          className="fixed inset-0 z-40 flex flex-col bg-[#1C2330] text-white"
+          className="fixed inset-0 z-40 flex flex-col bg-[#101010] text-white"
           role="dialog"
           aria-modal="true"
           aria-label="网站导航"
@@ -67,7 +69,7 @@ export function BottomNav() {
             className="pointer-events-none absolute inset-0 opacity-50"
             style={{
               background:
-                "radial-gradient(ellipse at 80% 20%, rgba(121,23,22,0.14) 0%, transparent 55%)",
+                "radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.18) 0%, transparent 55%)",
             }}
             aria-hidden="true"
           />
@@ -75,7 +77,7 @@ export function BottomNav() {
             <span className="text-xs tracking-wider text-white/40">
               盛世之后 · 观念流变
             </span>
-            <span className="font-heading text-lg text-white/70">安史之乱 · 文本分析</span>
+            <span className="font-heading text-lg text-white/70">Monumoir × 安史之乱</span>
             <button
               type="button"
               aria-label="关闭菜单"
@@ -85,30 +87,34 @@ export function BottomNav() {
               <CloseIcon className="h-5 w-5" />
             </button>
           </div>
-          <nav className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 p-6 md:gap-10">
-            {MENU_ITEMS.map((item) => (
-              <button
-                key={item.href}
-                type="button"
-                onClick={() => go(item.href)}
-                className="group flex items-baseline gap-4"
-              >
-                <span className="text-xs tracking-[0.3em] text-[#BF8567]">{item.num}</span>
-                <span className="font-heading text-3xl font-bold text-white transition-transform duration-300 group-hover:rotate-[2deg] md:text-5xl">
-                  {item.label}
-                </span>
-              </button>
-            ))}
-          </nav>
-          <div className="relative z-10 flex items-center justify-center gap-6 pb-10 text-xs text-white/40">
-            <span>北京师范大学</span>
+
+          <div className="relative z-10 min-h-0 flex-1">
+            <FlowingMenu
+              items={MENU_ITEMS.map((m) => ({
+                link: m.href,
+                text: m.label,
+                image: `${BASE_PATH}${m.img}`,
+                hint: m.num,
+              }))}
+              speed={14}
+              textColor="#f7f4ec"
+              bgColor="transparent"
+              marqueeBgColor="#faf7f2"
+              marqueeTextColor="#2c2416"
+              borderColor="rgba(255,255,255,0.12)"
+              onNavigate={(item) => go(item.link)}
+            />
+          </div>
+
+          <div className="relative z-10 flex items-center justify-center gap-6 pb-10 pt-4 text-xs text-white/40">
+            <span>IDHFUS 2026 · 赛道一</span>
             <span>·</span>
-            <span>历史学（强基计划）</span>
+            <span>中国人民大学信息资源管理学院</span>
           </div>
         </div>
       )}
 
-      {/* 底部导航栏 */}
+      {/* 底部导航栏（Monumoir 三列玻璃拟态） */}
       <div
         className={`fixed bottom-0 left-0 right-0 z-50 isolate grid grid-cols-3 items-center border-t py-1.5 px-5 backdrop-blur-xl transition-colors duration-[800ms] ease-out md:py-3 ${barStyle} ${
           open ? "border-white/10" : "border-line/60"

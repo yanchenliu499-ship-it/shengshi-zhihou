@@ -23,10 +23,10 @@ export function FlameTransition({
         palette="custom"
         shades={
           tone === "dark"
-            ? ["#5F2C21", "#791716", "#BF8567", "#D4A58C", "#E8C9B8", "#F5EFEA"]
-            : ["#5F2C21", "#6E8F7E", "#74AE9F", "#AA967E", "#D8D2C6"]
+            ? ["#5a1603", "#8f2404", "#c23e07", "#f0650d", "#ffa040", "#ffd98f"]
+            : ["#5c2b10", "#7c3a12", "#a3532a", "#c47a45", "#e3a878"]
         }
-        sparkColor={tone === "dark" ? "#F5EFEA" : "#D8D2C6"}
+        sparkColor={tone === "dark" ? "#ffd27a" : "#e3a878"}
         intensity={90}
         windDirection="right"
         windForce={8}
@@ -40,7 +40,7 @@ export function FlameTransition({
         style={{
           width: "100%",
           height: "100%",
-          opacity: tone === "dark" ? 0.72 : 0.45,
+          opacity: tone === "dark" ? 0.85 : 0.55,
         }}
       />
     </div>

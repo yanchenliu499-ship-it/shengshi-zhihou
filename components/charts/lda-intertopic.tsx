@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { EChart } from "@/components/chart";
 import { fetchJson, type LdaIntertopicData } from "@/lib/data";
 
-const PERIOD_COLORS = ["#791716", "#BF8567", "#5F2C21", "#AA967E"];
+const PERIOD_COLORS = ["#8b1a1a", "#b8860b", "#6b5e4a", "#9b8e7a"];
 
 /** 模块 13：LDA 主题聚类图（MDS 投影，交互） */
 export function LdaIntertopicChart() {
@@ -25,24 +25,24 @@ export function LdaIntertopicChart() {
           if (!d) return "";
           return `<b>${d.period} · 主题 ${d.topic_id}</b><br/>` +
             `主题占比: ${((d.prevalence ?? 0) * 100).toFixed(1)}%<br/>` +
-            `<span style="color:#5F2C21">${(d.top5 ?? []).join("、")}</span>`;
+            `<span style="color:#6b5e4a">${(d.top5 ?? []).join("、")}</span>`;
         },
       },
-      legend: { data: periods, bottom: 0, textStyle: { color: "#5F2C21", fontSize: 11 } },
+      legend: { data: periods, bottom: 0, textStyle: { color: "#6b5e4a", fontSize: 11 } },
       grid: { top: 20, right: 30, bottom: 40, left: 40 },
       xAxis: {
         type: "value",
         name: "MDS 维度 1",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#AA967E", fontSize: 9 },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#9b8e7a", fontSize: 9 },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       yAxis: {
         type: "value",
         name: "MDS 维度 2",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#AA967E", fontSize: 9 },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#9b8e7a", fontSize: 9 },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       series: periods.map((pd, pi) => ({
         name: pd,
@@ -61,14 +61,14 @@ export function LdaIntertopicChart() {
           const v = val as { prevalence?: number };
           return 18 + (v.prevalence ?? 0) * 90;
         },
-        itemStyle: { color: PERIOD_COLORS[pi], opacity: 0.82, borderColor: "#35475F", borderWidth: 0.6 },
+        itemStyle: { color: PERIOD_COLORS[pi], opacity: 0.82, borderColor: "#2c2416", borderWidth: 0.6 },
         label: {
           show: true,
           formatter: (p: unknown) => {
             const d = (p as { data?: { top_words?: string } }).data;
             return d?.top_words ?? "";
           },
-          color: "#35475F",
+          color: "#2c2416",
           fontSize: 10,
           position: "bottom",
         },

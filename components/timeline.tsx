@@ -16,7 +16,7 @@ export function Timeline() {
       <div
         className="absolute left-1/2 top-0 bottom-0 hidden w-[2px] -translate-x-1/2 md:block"
         style={{
-          background: "linear-gradient(to bottom, #791716, #BF8567, #5F2C21)",
+          background: "linear-gradient(to bottom, #8b1a1a, #b8860b, #6b5e4a)",
         }}
         aria-hidden="true"
       />
@@ -28,11 +28,11 @@ export function Timeline() {
               <div className="relative md:grid md:grid-cols-2 md:gap-12">
                 {/* 圆点 */}
                 <div
-                  className="absolute left-4 top-2 z-10 hidden h-4 w-4 rounded-full border-2 border-[#1C2330] md:block"
+                  className="absolute left-4 top-2 z-10 hidden h-4 w-4 rounded-full border-2 border-[#101010] md:block"
                   style={{
                     background: PERIOD_COLORS[i],
                     left: "calc(50% - 8px)",
-                    boxShadow: `0 0 0 4px rgba(121,23,22,0.12)`,
+                    boxShadow: `0 0 0 4px rgba(139,26,26,0.15)`,
                   }}
                   aria-hidden="true"
                 />

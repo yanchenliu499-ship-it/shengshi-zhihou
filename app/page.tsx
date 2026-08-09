@@ -33,33 +33,33 @@ import {
 const METHODS = [
   {
     Icon: ScrollIcon,
-    title: "语料库构建",
-    desc: "从《旧唐书》《全唐文》《全唐诗》及唐人笔记中筛选提及安史之乱的文本片段，按作者、年代、体裁标注元数据，构建结构化语料库。",
+    title: "语料库预处理",
+    desc: "语料来自《全唐诗》中经关键词筛选与人工审核后确定的 444 首安史之乱相关诗歌。OCR 数字化、jieba 分词、词性过滤与去停用词统一预处理；停用词表采用哈工大停用词表并增补文言虚词，自定义词典增补「中兴」「豺狼」「幕府」「天宝」「潼关」「马嵬」等术语及其词性标注。",
   },
   {
     Icon: SealIcon,
-    title: "命名实体识别",
-    desc: "利用 MARKUS 半自动标注平台 + CBDB 人物数据库，对文本中的人名、地名、时间、官职进行实体识别与消歧链接。",
+    title: "时期划分与编年",
+    desc: "大量诗歌纪年已不可考，故采取诗人—时期的映射策略，根据诗人的主要活动年代与政治代际将诗歌划入四个时期（肃宗—代宗 213 首、德宗—宪宗 100 首、穆宗—文宗 40 首、武宗—哀帝 60 首）；编年工作由腾讯 AI 智能体 WorkBuddy 判断、人工抽样校对。",
   },
   {
     Icon: LdaIcon,
     title: "LDA 主题建模",
-    desc: "对四个时期的语料分别进行 LDA 主题建模，通过困惑度与主题一致性（UMass）检验确定主题数，提取各时期核心议题，并以 MDS 投影与层次聚类可视化主题语义空间，追踪主题跨时期的演变路径。",
+    desc: "预处理仅保留名词（n/nz/vn），CountVectorizer 参数 max_features=800、max_df=0.6、min_df=2；经困惑度与 UMass 一致性双指标确定 K=5，四时期共 20 个主题；主题间距离以 Hellinger 距离 + MDS 投影 + Ward 层次聚类可视化。",
   },
   {
     Icon: NetworkIcon,
-    title: "社会网络分析",
-    desc: "构建「人物—事件」「人物—主题」的二模网络，可视化不同时期的话语权力格局与信息流动。",
+    title: "归因与话语检测",
+    desc: "归因检测基于关键词映射规则，对诗歌中出现的归咎对象（安禄山、天命、李林甫、杨国忠等）进行提及计数；结合词频、词云追溯「中兴」「天宝」等关键政治话语在四时期的消长。",
   },
   {
     Icon: SentimentIcon,
-    title: "情感态度分析",
-    desc: "基于古文情感词典 + 百度 Senta BiLSTM 模型双方法对文本情感打分，对照「显性情感词」与「整体语义基调」的差异，并标注态度倾向（哀恸/愤怒/反思/冷漠/辩护），绘制态度演变曲线。",
+    title: "双方法情感分析",
+    desc: "采用人工情感词典（171 词：积极 46、消极 110、中性 15）与百度 Senta BiLSTM 模型双方法并行；Senta 词嵌入 128 维、双向 LSTM 198 维、softmax 二分类，并以卡方检验、Cramér's V 与双方法 Cohen's κ 对照验证。",
   },
   {
     Icon: ArchaeologyIcon,
-    title: "话语考古",
-    desc: "追踪「天宝」「中兴」「贰臣」「忠节」等关键概念在唐代文献中的语义流变，揭示观念建构的代际过程。",
+    title: "关键词流变追踪",
+    desc: "高频词以战争地理与军政机构（幕府、潼关、幽州、马嵬、将军）及政治话语（天子、中兴、天宝）为主；「中兴」「太平」判为正、「豺狼」「熊罴」「多难」判为负——追踪这些词汇在四时期的语义流变与代际迁移。",
   },
 ];
 
@@ -76,7 +76,7 @@ function ChartCard({
 }) {
   return (
     <ScrollReveal className={className}>
-      <div className="rounded-2xl bg-[#FDFCFA]/65 p-5 shadow-[0_1px_0_rgba(53,71,95,0.04)] ring-1 ring-line/40 backdrop-blur-[2px] md:p-6">
+      <div className="rounded-2xl bg-white/65 p-5 shadow-[0_1px_0_rgba(44,36,22,0.04)] ring-1 ring-line/40 backdrop-blur-[2px] md:p-6">
         <div className="mb-4 flex items-baseline gap-3">
           {num && (
             <span className="font-heading text-sm font-bold tracking-[0.2em] text-accent/60">
@@ -97,25 +97,25 @@ export default function HomePage() {
       <Hero />
 
       {/* 01 研究问题 */}
-      <Section id="about" flame topGradient="linear-gradient(to bottom, #1C2330 0%, #FDFCFA 100%)">
+      <Section id="about" flame topGradient="linear-gradient(to bottom, #101010 0%, #faf7f2 100%)">
         <SectionHeader num="01" title="研究问题" />
         <div className="mx-auto max-w-[760px] space-y-5">
           <ScrollReveal>
             <div
-              className="relative overflow-hidden rounded-2xl p-6 text-center shadow-[0_8px_32px_rgba(121,23,22,0.22)] md:p-8"
+              className="relative overflow-hidden rounded-2xl p-6 text-center shadow-[0_8px_32px_rgba(139,26,26,0.28)] md:p-8"
               style={{
                 background:
-                  "radial-gradient(ellipse at 50% 0%, #791716 0%, #5F2C21 55%, #35475F 100%)",
-                border: "1px solid rgba(191,133,103,0.45)",
+                  "radial-gradient(ellipse at 50% 0%, #9d2a2a 0%, #7d1717 55%, #5e0f0f 100%)",
+                border: "1px solid rgba(184,134,11,0.45)",
               }}
             >
               {/* 金色卷草纹带：上 / 下 */}
               <VineBand className="mx-auto h-5 w-56 max-w-full opacity-80" tone="gold" />
-              <p className="mt-2 font-heading text-2xl font-bold tracking-wide text-[#F7F5F1] md:text-3xl">
+              <p className="mt-2 font-heading text-2xl font-bold tracking-wide text-[#f7f4ec] md:text-3xl">
                 核心提问
               </p>
-              <p className="mx-auto mt-3 max-w-[560px] text-[15px] leading-[2] text-[#F5EFEA]/90 md:text-base">
-                <strong className="text-[#FDFCFA]">
+              <p className="mx-auto mt-3 max-w-[560px] text-[15px] leading-[2] text-[#f5e9e9]/90 md:text-base">
+                <strong className="text-white">
                   唐人自认为他们的王朝何时走向了衰落？
                 </strong>
                 <br />
@@ -125,24 +125,22 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={120}>
-            <div className="relative overflow-hidden rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(53,71,95,0.06)] md:p-7">
+            <div className="relative overflow-hidden rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(44,36,22,0.08)] md:p-7">
               <div
                 className="absolute inset-y-0 left-0 w-1"
                 style={{
                   background:
-                    "linear-gradient(to bottom, #BF8567, #791716)",
+                    "linear-gradient(to bottom, #b8860b, #8b1a1a)",
                 }}
                 aria-hidden="true"
               />
               <p className="mb-3 pl-3 font-bold text-ink">研究路径</p>
               <p className="pl-3 text-[14px] leading-[2.1] text-ink-soft">
-                全唐诗文本（444 首安史之乱相关）→ 人工审核 →{" "}
-                <strong className="text-ink">jieba 分词+词性标注</strong> →{" "}
-                <strong className="text-ink">TF-IDF 关键词提取</strong> →{" "}
-                <strong className="text-ink">LDA 主题建模</strong>
-                （每时期 K=5，经困惑度/一致性检验，共计 20 个主题）→{" "}
-                <strong className="text-ink">情感词典+人工校验</strong>（171 词）→{" "}
-                <strong className="text-ink">四阶段追踪</strong>（肃代/德宪/穆文/武哀）
+                以《全唐诗》444 首安史之乱相关诗歌为核心语料，围绕「唐人对安史之乱的认知变迁」开展三项互补的数字人文分析：
+                <strong className="text-ink">情感分析</strong>——测量诗歌的整体情感倾向与四时期变化；
+                <strong className="text-ink">LDA 主题建模</strong>——识别各时期核心议题及其跨期演变；
+                <strong className="text-ink">文本与话语分析</strong>——通过词频、词云追溯关键政治话语的消长。
+                三项任务相互独立、又彼此印证，以期得到对安史之乱的超视距观察。
               </p>
             </div>
           </ScrollReveal>
@@ -154,7 +152,7 @@ export default function HomePage() {
         <SectionHeader
           num="02"
           title="数据分析"
-          subtitle="基于语料库的多维度文本分析，揭示唐代衰亡叙事的深层结构"
+          subtitle="三项互补的数字人文分析——情感、主题与话语，彼此印证，以期得到对安史之乱的超视距观察"
         />
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <ChartCard num="02-01" title="📈 情感散点图 · 点击查看诗歌" className="lg:col-span-2">
@@ -220,7 +218,7 @@ export default function HomePage() {
       <TangDivider variant="stripe" />
 
       {/* 03 四阶段演变（深色） */}
-      <Section id="timeline" dark flame className="!py-24 md:!py-32" topGradient="linear-gradient(to bottom, #E7E2D8 0%, #1C2330 100%)">
+      <Section id="timeline" dark flame className="!py-24 md:!py-32" topGradient="linear-gradient(to bottom, #f0ebe0 0%, #101010 100%)">
         <TangBackdrop />
         <SectionHeader
           num="03"
@@ -231,8 +229,8 @@ export default function HomePage() {
         <Timeline />
 
         {/* 悬停查看各时期词云 */}
-        <div className="mt-10 rounded-2xl border border-white/10 bg-[#1C2330] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.25)] md:p-6">
-          <h3 className="font-heading text-lg font-bold text-[#F7F5F1] md:text-xl">悬停查看各时期词云</h3>
+        <div className="mt-10 rounded-2xl border border-white/10 bg-[#14110c] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.35)] md:p-6">
+          <h3 className="font-heading text-lg font-bold text-[#f7f4ec] md:text-xl">悬停查看各时期词云</h3>
           <p className="mb-4 mt-1 text-xs text-white/45">
             将鼠标移到时期上，对应词云随即浮现并跟随光标；其余时期自动变暗。
           </p>
@@ -249,7 +247,7 @@ export default function HomePage() {
         <SectionHeader
           num="04"
           title="未完成的中兴"
-          subtitle="全语料词频第 3 的政治关键词——经词性修正已回归 LDA 主题，唐人四十年未竟的中兴期待"
+          subtitle="55 首含「中兴」诗作构成独特子语料库：肃宗—代宗 15 首 → 德宗—宪宗骤降至 2 首 → 穆宗—文宗回升 8 首 → 武宗—哀帝激增至 24 首——王朝将亡，呼唤愈发迫切，却始终未成"
         />
         <ZhongxingSection />
       </Section>
@@ -258,26 +256,24 @@ export default function HomePage() {
       <Section
         id="palace"
         className="!bg-paper-deep"
-        topGradient="linear-gradient(to bottom, #1C2330 0%, #E7E2D8 100%)"
+        topGradient="linear-gradient(to bottom, #101010 0%, #f0ebe0 100%)"
       >
         <SectionHeader
           num="05"
           title="从战争到宫闱"
-          subtitle="穆宗—文宗时期：情感微升、主题词由战场转向宫闱——唐人的衰亡叙事如何内移为朝纲与君德之思"
+          subtitle="穆宗—文宗时期情感曲线一反常态：消极占比降至四时期最低、积极占比升至最高；宫闱词取代战争词——衰亡叙事由外患内移为朝纲与君德之思"
         />
         <PalaceTurn />
       </Section>
 
-      {/* 06 文本探索器（书签弹窗） */}
+      {/* 06 文本探索器 */}
       <Section id="texts">
         <SectionHeader
           num="06"
           title="文本探索器"
-          subtitle="点击右侧书签，逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索"
+          subtitle="逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索"
         />
-        <div className="text-center">
-          <p className="text-sm text-ink-muted">→ 点击页面右侧的赭石色书签，打开文本探索面板</p>
-        </div>
+        <TextExplorer />
       </Section>
 
       {/* 07 研究方法 */}
@@ -304,25 +300,28 @@ export default function HomePage() {
       </Section>
 
       {/* 08 团队 + 页脚 */}
-      <Section id="team" dark className="!py-16" topGradient="linear-gradient(to bottom, #E7E2D8 0%, #1C2330 100%)">
+      <Section id="team" dark className="!py-16" topGradient="linear-gradient(to bottom, #f0ebe0 0%, #101010 100%)">
         <SectionHeader num="08" title="团队成员" dark />
-        <div className="mx-auto max-w-[600px] space-y-6">
-          <div className="flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
-            <div className="font-heading text-lg font-bold text-white">刘彦辰</div>
-            <div className="text-sm text-white/60">北京师范大学 2023级历史学（强基计划）专业本科生</div>
-          </div>
-          <div className="flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
-            <div className="font-heading text-lg font-bold text-white">张浩歌</div>
-            <div className="text-sm text-white/60">北京师范大学 2023级历史学（强基计划）专业本科生</div>
-          </div>
-        </div>
+        <p className="text-center text-sm italic text-white/40">
+          （团队成员信息待补充）
+        </p>
         <footer className="mt-14 border-t border-white/10 pt-8 text-center text-xs leading-[2] text-white/40">
-          <p className="mt-4 text-white/25">盛世之后 · 唐人视野中的王朝衰亡</p>
+          <p>首届大学生国际数字人文节（IDHFUS 2026）参展作品</p>
+          <p>主题：遗产·记忆·视界 &nbsp;|&nbsp; 赛道：自选主题</p>
+          <p>中国人民大学信息资源管理学院 · 数字人文研究院</p>
+          <p className="mt-2">
+            <a
+              href="mailto:idhfus@ruc.edu.cn"
+              className="text-[#c44d4d] underline-offset-2 hover:underline"
+            >
+              idhfus@ruc.edu.cn
+            </a>
+          </p>
+          <p className="mt-4 text-white/25">盛世之后 · 唐人视野中的王朝衰亡 — Monumoir 风格重构</p>
         </footer>
       </Section>
 
       <BottomNav />
-      <TextExplorer />
     </main>
   );
 }

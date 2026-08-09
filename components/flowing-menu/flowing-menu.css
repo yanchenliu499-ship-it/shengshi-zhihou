@@ -1,0 +1,130 @@
+/* FlowingMenu —— React Bits 动效，中文站点适配版 */
+.fm-menu-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fm-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.fm-menu__item {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-top: 1px solid;
+}
+
+.fm-menu__item:first-child {
+  border-top: none;
+}
+
+.fm-menu__item-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: min(4vh, 34px);
+  letter-spacing: 0.05em;
+  font-family: var(--font-heading), "Noto Serif SC", "Songti SC", serif;
+}
+
+.fm-menu__item-link:hover {
+  color: inherit;
+}
+
+.fm-menu__item-link:focus:not(:focus-visible) {
+  color: inherit;
+}
+
+.fm-menu__item-link:focus-visible {
+  outline: 2px solid #c44d4d;
+  outline-offset: -6px;
+}
+
+.fm-menu__item-hint {
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #c44d4d;
+  transform: translateY(-0.08em);
+}
+
+.fm-marquee {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: translate3d(0, 101%, 0);
+}
+
+.fm-marquee__inner-wrap {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.fm-marquee__inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  will-change: transform;
+}
+
+.fm-marquee__part {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fm-marquee span {
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: min(4vh, 34px);
+  line-height: 1;
+  padding: 0 1vw;
+  font-family: var(--font-heading), "Noto Serif SC", "Songti SC", serif;
+}
+
+.fm-marquee__img {
+  width: auto;
+  height: min(6.5vh, 64px);
+  aspect-ratio: 16 / 9;
+  margin: 0 1.5vw;
+  border-radius: 999px;
+  background-size: cover;
+  background-position: 50% 50%;
+  box-shadow: 0 4px 18px rgba(44, 36, 22, 0.18);
+}
+
+@media (max-width: 640px) {
+  .fm-menu__item-link {
+    font-size: min(4.2vh, 26px);
+  }
+  .fm-marquee span {
+    font-size: min(4.2vh, 26px);
+  }
+  .fm-marquee__img {
+    height: min(6vh, 48px);
+    margin: 0 1vw;
+  }
+}

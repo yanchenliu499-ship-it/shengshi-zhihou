@@ -125,7 +125,7 @@ export const PERIOD_ORDER: Record<string, number> = {
   "武宗—哀帝": 3,
 };
 
-export const PERIOD_COLORS = ["#791716", "#BF8567", "#5F2C21", "#AA967E"];
+export const PERIOD_COLORS = ["#8b1a1a", "#b8860b", "#6b5e4a", "#9b8e7a"];
 
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 

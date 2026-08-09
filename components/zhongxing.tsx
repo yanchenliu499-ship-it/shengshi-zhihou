@@ -47,15 +47,15 @@ export function ZhongxingSection() {
       xAxis: {
         type: "category",
         data: periods,
-        axisLabel: { color: "#5F2C21", fontSize: 11 },
-        axisLine: { lineStyle: { color: "rgba(170,150,126,0.35)" } },
+        axisLabel: { color: "#6b5e4a", fontSize: 11 },
+        axisLine: { lineStyle: { color: "#e0d8c8" } },
       },
       yAxis: {
         type: "value",
         name: "诗作数",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
-        axisLabel: { color: "#AA967E" },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
+        axisLabel: { color: "#9b8e7a" },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       series: [
         {
@@ -65,7 +65,7 @@ export function ZhongxingSection() {
             itemStyle: { color: PERIOD_COLORS[i], borderRadius: [6, 6, 0, 0] },
           })),
           barWidth: "46%",
-          label: { show: true, position: "top", color: "#35475F", fontSize: 12, fontWeight: "bold" },
+          label: { show: true, position: "top", color: "#2c2416", fontSize: 12, fontWeight: "bold" },
         },
       ],
     };
@@ -100,7 +100,7 @@ export function ZhongxingSection() {
           { v: "29 / 21", l: "消极 / 积极（Senta）" },
           { v: "杜甫 14 首", l: "最高频诗人" },
         ].map((s) => (
-          <div key={s.l} className="rounded-2xl border border-line bg-card p-4 text-center shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+          <div key={s.l} className="rounded-2xl border border-line bg-card p-4 text-center shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
             <div className="font-heading text-2xl font-black text-accent md:text-3xl">{s.v}</div>
             <div className="mt-1 text-xs text-ink-soft">{s.l}</div>
           </div>
@@ -109,7 +109,7 @@ export function ZhongxingSection() {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* 时期分布图 */}
-        <div className="rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+        <div className="rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
           <h4 className="mb-3 font-heading text-base font-bold text-ink">「中兴」出现的时期分布</h4>
           <EChart option={option} className="h-[280px] w-full" />
           <p className="mt-2 text-xs leading-relaxed text-ink-muted">
@@ -119,7 +119,7 @@ export function ZhongxingSection() {
         </div>
 
         {/* 方法学注记 */}
-        <div className="flex flex-col justify-between rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+        <div className="flex flex-col justify-between rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
           <div>
             <h4 className="mb-2 font-heading text-base font-bold text-ink">从被过滤到回归主题：「中兴」的标注修正</h4>
             <ul className="list-disc space-y-1.5 pl-5 text-[13px] leading-relaxed text-ink-soft">
@@ -141,7 +141,7 @@ export function ZhongxingSection() {
       </div>
 
       {/* 诗句列表 */}
-      <div className="rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+      <div className="rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h4 className="font-heading text-base font-bold text-ink">含「中兴」的诗句（{poems.length} / {data.total}）</h4>
           <select
@@ -160,7 +160,7 @@ export function ZhongxingSection() {
           {poems.map((p) => {
             const pi = Math.max(0, PERIODS.indexOf(p.period));
             return (
-              <div key={p.id} className="rounded-xl border border-line bg-paper p-3.5 transition-shadow hover:shadow-[0_4px_16px_rgba(53,71,95,0.12)]">
+              <div key={p.id} className="rounded-xl border border-line bg-paper p-3.5 transition-shadow hover:shadow-[0_4px_16px_rgba(44,36,22,0.12)]">
                 <div className="flex items-center gap-2 text-xs">
                   <span className="rounded px-2 py-0.5 font-medium" style={{ background: `${PERIOD_COLORS[pi]}22`, color: PERIOD_COLORS[pi] }}>
                     {p.period || "未归期"}
@@ -171,7 +171,7 @@ export function ZhongxingSection() {
                 <div className="mt-1.5 font-heading text-sm font-bold text-ink">{p.title}</div>
                 {p.line && (
                   <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-ink-soft">
-                    <mark className="rounded bg-[rgba(191,133,103,0.3)] px-0.5 text-inherit">「{p.line}」</mark>
+                    <mark className="rounded bg-[rgba(184,134,11,0.3)] px-0.5 text-inherit">「{p.line}」</mark>
                   </p>
                 )}
               </div>

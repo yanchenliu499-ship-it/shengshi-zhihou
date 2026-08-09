@@ -31,8 +31,8 @@ export function PeriodHoverReveal() {
         letterSpacing: "0.02em",
         lineHeight: 1.7,
       }}
-      textColor="#F7F5F1"
-      dimColor="rgba(255,255,255,0.18)"
+      textColor="#f7f4ec"
+      dimColor="rgba(255,255,255,0.22)"
       align="left"
       rowGap={14}
       imageWidth={360}
@@ -41,7 +41,7 @@ export function PeriodHoverReveal() {
       offsetX={190}
       offsetY={-30}
       followStrength={1}
-      backgroundColor="#1C2330"
+      backgroundColor="#14110c"
       style={{ borderRadius: 14, height: "100%", minHeight: 320 }}
     />
   );

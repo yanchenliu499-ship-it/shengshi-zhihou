@@ -28,7 +28,7 @@ export function TangBackdrop() {
           mixBlendMode: "screen",
         }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[#1C2330]/45" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-[#101010]/45" aria-hidden="true" />
     </>
   );
 }

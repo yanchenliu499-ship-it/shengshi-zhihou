@@ -19,12 +19,12 @@ export function SectionHeader({
     <ScrollReveal className="text-center mb-12 md:mb-16">
       <span
         className={`mb-2 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.3em] ${
-          dark ? "text-[#BF8567]" : "text-accent"
+          dark ? "text-[#c44d4d]" : "text-accent"
         }`}
       >
-        <FrettMark className={`h-5 w-5 ${dark ? "text-[#BF8567]/70" : "text-accent/60"}`} />
+        <FrettMark className={`h-5 w-5 ${dark ? "text-[#b8860b]/70" : "text-accent/60"}`} />
         {num}
-        <FrettMark className={`h-5 w-5 rotate-180 ${dark ? "text-[#BF8567]/70" : "text-accent/60"}`} />
+        <FrettMark className={`h-5 w-5 rotate-180 ${dark ? "text-[#b8860b]/70" : "text-accent/60"}`} />
       </span>
       <div
         role="heading"
@@ -78,7 +78,7 @@ export function Section({
         dark
           ? {
               background:
-                "radial-gradient(ellipse at 50% -10%, rgba(121,23,22,0.32) 0%, rgba(28,35,48,0.25) 45%, #1C2330 75%, #1C2330 100%), #1C2330",
+                "radial-gradient(ellipse at 50% -10%, rgba(139,26,26,0.42) 0%, rgba(40,8,8,0.25) 45%, #0f0505 75%, #101010 100%), #101010",
             }
           : undefined
       }

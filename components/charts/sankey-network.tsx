@@ -6,17 +6,17 @@ import { EChart } from "@/components/chart";
 import { fetchJson, type NetworkData, type TopicsData } from "@/lib/data";
 
 const CAT_COLORS: Record<string, string> = {
-  诗人: "#791716",
-  忠臣: "#BF8567",
-  文士: "#BF8567",
-  文宗: "#791716",
-  宰相: "#5F2C21",
-  史家: "#35475F",
-  隐士: "#AA967E",
-  叛臣: "#35475F",
-  权臣: "#5F2C21",
-  君主: "#BF8567",
-  事件: "#BF8567",
+  诗人: "#8b1a1a",
+  忠臣: "#b8860b",
+  文士: "#c44d4d",
+  文宗: "#a83232",
+  宰相: "#6b5e4a",
+  史家: "#2c2416",
+  隐士: "#9b8e7a",
+  叛臣: "#444",
+  权臣: "#555",
+  君主: "#b8860b",
+  事件: "#d4a843",
 };
 
 /** 模块 4：主题流变 · 桑基图 */
@@ -57,10 +57,10 @@ export function SankeyChart() {
           label: {
             fontSize: 11,
             fontFamily: '"PingFang SC","Microsoft YaHei",sans-serif',
-            color: "#35475F",
+            color: "#2c2416",
           },
           lineStyle: { color: "source", curveness: 0.5, opacity: 0.25 },
-          itemStyle: { color: "#791716", borderWidth: 0 },
+          itemStyle: { color: "#8b1a1a", borderWidth: 0 },
         },
       ],
     };
@@ -104,7 +104,7 @@ export function NetworkChart() {
       legend: {
         data: categories.map((c) => c.name),
         bottom: 0,
-        textStyle: { color: "#5F2C21", fontSize: 10 },
+        textStyle: { color: "#6b5e4a", fontSize: 10 },
         itemWidth: 10,
         itemHeight: 10,
       },
@@ -119,25 +119,25 @@ export function NetworkChart() {
           data: (data?.nodes ?? []).map((n) => ({
             ...n,
             symbolSize: Math.max(8, n.value * 1.5),
-            itemStyle: { color: CAT_COLORS[n.category] || "#791716" },
+            itemStyle: { color: CAT_COLORS[n.category] || "#8b1a1a" },
             category: n.category,
           })),
           links: (data?.links ?? []).map((l) => ({
             ...l,
-            lineStyle: { color: "rgba(170,150,126,0.35)", opacity: 0.5, width: Math.max(0.5, l.value / 5) },
+            lineStyle: { color: "#e0d8c8", opacity: 0.5, width: Math.max(0.5, l.value / 5) },
           })),
           label: {
             show: true,
             position: "right",
             fontSize: 11,
-            color: "#35475F",
+            color: "#2c2416",
             fontFamily: '"PingFang SC","Microsoft YaHei",sans-serif',
           },
           lineStyle: { curveness: 0.2, opacity: 0.5 },
           emphasis: {
             focus: "adjacency",
             label: { fontSize: 14, fontWeight: "bold" },
-            itemStyle: { borderWidth: 2, borderColor: "#35475F" },
+            itemStyle: { borderWidth: 2, borderColor: "#2c2416" },
           },
         },
       ],

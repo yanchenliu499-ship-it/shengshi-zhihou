@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import type { PoemPoint } from "@/lib/data";
 
 function sentimentClass(s: number) {
-  return s >= 0 ? "bg-[rgba(191,133,103,0.12)] text-[#BF8567]" : "bg-[rgba(121,23,22,0.10)] text-[#791716]";
+  return s >= 0 ? "bg-[rgba(184,134,11,0.12)] text-[#b8860b]" : "bg-[rgba(139,26,26,0.12)] text-[#8b1a1a]";
 }
 
 export function PoemModal({
@@ -28,7 +28,7 @@ export function PoemModal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[rgba(53,71,95,0.50)] p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[rgba(44,36,22,0.6)] p-4"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="relative max-h-[82vh] w-full max-w-[560px] overflow-y-auto rounded-2xl bg-card p-6 shadow-[0_12px_40px_rgba(0,0,0,0.3)] md:p-7">
@@ -58,13 +58,13 @@ export function PoemModal({
           {poem.text || "（正文截断）"}
         </div>
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
-          <span className="rounded bg-[rgba(191,133,103,0.12)] px-2 py-1 font-medium text-[#BF8567]">
+          <span className="rounded bg-[rgba(184,134,11,0.12)] px-2 py-1 font-medium text-[#b8860b]">
             正向词 {poem.positive_words}
           </span>
-          <span className="rounded bg-[rgba(121,23,22,0.10)] px-2 py-1 font-medium text-[#791716]">
+          <span className="rounded bg-[rgba(139,26,26,0.12)] px-2 py-1 font-medium text-[#8b1a1a]">
             负向词 {poem.negative_words}
           </span>
-          <span className="rounded bg-[rgba(95,44,33,0.08)] px-2 py-1 font-medium text-[#5F2C21]">
+          <span className="rounded bg-[rgba(107,94,74,0.1)] px-2 py-1 font-medium text-[#6b5e4a]">
             归因 {poem.blame_target || "其他"}
           </span>
         </div>

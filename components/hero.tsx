@@ -15,7 +15,7 @@ const HERO_STATS = [
   { number: "171", label: "情感词" },
 ];
 
-/** 固定于首屏下方的「向下探索」按钮 */
+/** 固定于首屏下方的「向下探索」按钮（Monumoir Wake-a-Statue 风格） */
 function ScrollHintButton() {
   const { scrollTo } = useLenis();
   const [hidden, setHidden] = useState(false);
@@ -62,7 +62,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 22% 40%, rgba(121,23,22,0.12) 0%, transparent 55%), radial-gradient(ellipse at 78% 60%, rgba(191,133,103,0.08) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 22% 40%, rgba(139,26,26,0.16) 0%, transparent 55%), radial-gradient(ellipse at 78% 60%, rgba(184,134,11,0.10) 0%, transparent 55%)",
         }}
         aria-hidden="true"
       />
@@ -87,8 +87,8 @@ export function Hero() {
 
       <div className="relative z-10 flex w-full max-w-[1000px] flex-col items-center">
         <ScrollReveal>
-          <span className="inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-[0.25em] text-[#AA967E]">
-            唐代文献 · 数字人文研究
+          <span className="inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-[0.25em] text-[#c4b7a2]">
+            IDHFUS 2026 · 赛道一
           </span>
         </ScrollReveal>
 
@@ -105,7 +105,7 @@ export function Hero() {
 
         <ScrollReveal delay={240}>
           <div className="mt-4 flex items-center justify-center gap-3">
-            <p className="font-heading text-xl font-medium text-[#BF8567] sm:text-2xl md:text-3xl">
+            <p className="font-heading text-xl font-medium text-[#c44d4d] sm:text-2xl md:text-3xl">
               唐人视野中的王朝衰亡
             </p>
             <SealStamp
@@ -118,12 +118,11 @@ export function Hero() {
 
         <ScrollReveal delay={360}>
           <p className="mt-8 max-w-[680px] text-[15px] font-light leading-[1.9] text-white/65 md:text-base">
-            安史之乱（755—763）是唐代由盛转衰的转折点——这是后人的共识。
+            中晚唐的皇帝制敕、大臣奏状与文人文集中，反复出现「兵兴以来」「天宝以来」的追忆——安史之乱作为重大转折被反复提及。
             <br className="hidden md:block" />
-            但唐人自己呢？从杜甫的「国破山河在」到韩愈的「天宝以后」再到《旧唐书》的盖棺定论，
+            但唐人自己如何认知这场变乱？本网站以《全唐诗》444 首安史之乱题材诗歌为量化语料，
             <br className="hidden md:block" />
-            唐人何时、如何建构起「王朝已衰」的集体认知？本项目通过数字人文方法，追踪 762—907
-            年间唐代文献中安史之乱记忆与衰亡叙事的演变轨迹。
+            通过情感分析、LDA 主题建模与话语分析，追踪 762—907 年间唐人记忆与衰亡叙事的演变轨迹。
           </p>
         </ScrollReveal>
 
@@ -131,7 +130,7 @@ export function Hero() {
           <div className="flex items-start gap-7 sm:gap-10 md:gap-16">
             {HERO_STATS.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-heading text-3xl font-black text-[#BF8567] sm:text-4xl md:text-5xl">
+                <div className="font-heading text-3xl font-black text-[#c44d4d] sm:text-4xl md:text-5xl">
                   {s.number}
                 </div>
                 <div className="mt-1 text-[11px] font-light tracking-wider text-white/50 md:text-xs">

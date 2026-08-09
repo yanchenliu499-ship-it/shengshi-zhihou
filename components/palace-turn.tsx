@@ -14,7 +14,7 @@ const STATS = [
 const POINTS: { title: string; body: string }[] = [
   {
     title: "战争记忆的退场",
-    body: "安史之乱已过去六十年至八十年，直接创伤渐行渐远。穆宗—文宗时期，LDA 主题中「豺狼、幕府、忠臣、潼关」等战争词退居次要，「清宫、霓裳、珊瑚、鹦鹉」等宫闱词取而代之——渔阳鼙鼓、霓裳羽衣由创伤记忆沉淀为文化记忆。",
+    body: "安史之乱已过去六十年至八十年，直接创伤渐行渐远。穆宗—文宗时期，LDA 主题中战争词退居次要，宫闱词取而代之——渔阳鼙鼓、霓裳羽衣由创伤记忆沉淀为文化记忆，宫闱词汇的出现意味着人们越来越多地将变乱的原因深系宫闱。",
   },
   {
     title: "宫闱意象的隐喻",
@@ -22,18 +22,18 @@ const POINTS: { title: string; body: string }[] = [
   },
   {
     title: "表面转暖，底里仍冷",
-    body: "显性情感词典由 −0.36 转正至 +0.35，缘于宫闱题材辞藻华美、追忆开元盛世；但 Senta 语义模型仍为 −0.12，说明文本底色依旧是失落与讽喻——追忆之中暗含对「盛世难再」的清醒。",
+    body: "四阶段基本的情感曲线是消极占比不断升高，穆宗—文宗却一反常态：Senta 模型下消极占比 55.0%（四时期最低）、积极占比升至四时期最高；与人工词典法相对照（由 −0.36 转正至 +0.35），显性情感词转暖，语义底色依旧是失落与讽喻。",
   },
   {
     title: "历史语境",
-    body: "穆宗荒于宴乐、敬宗嬉游无度、文宗朝甘露之变（835）后宦官专权达到顶点，牛李党争不绝。士人的焦虑从「国破」转向「宫闱之祸」，宫词（张祜等）随之兴起——衰亡叙事的焦点由外患内移为朝纲与君德。",
+    body: "穆宗—文宗时期宫闱体诗歌的兴起，主要因为清流文人逐渐式微，权相党争与宦官专权挤压了他们的生存空间：李商隐因牛李党争被双方排挤，温庭筠遭谗毁黜落，杜牧常年漂泊外官。他们并不生活在长安城的政治空间中，衰亡叙事的焦点由外患内移为朝纲与君德。",
   },
 ];
 
 function StatCard({ value, label, note }: { value: string; label: string; note: string }) {
   return (
     <ScrollReveal className="h-full">
-      <div className="h-full rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+      <div className="h-full rounded-2xl border border-line bg-card p-5 shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
         <div className="font-heading text-xl font-black text-accent md:text-2xl">{value}</div>
         <div className="mt-1.5 text-sm font-semibold text-ink">{label}</div>
         <div className="mt-0.5 text-xs text-ink-muted">{note}</div>
@@ -45,7 +45,7 @@ function StatCard({ value, label, note }: { value: string; label: string; note: 
 function WordWall({ title, words, tone }: { title: string; words: string[]; tone: "war" | "palace" }) {
   return (
     <ScrollReveal className="h-full">
-      <div className="h-full rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+      <div className="h-full rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
         <h4 className={`font-heading text-base font-bold ${tone === "war" ? "text-ink" : "text-accent"}`}>
           {title}
         </h4>
@@ -71,7 +71,7 @@ function WordWall({ title, words, tone }: { title: string; words: string[]; tone
 function PointCard({ title, body, delay }: { title: string; body: string; delay: number }) {
   return (
     <ScrollReveal delay={delay} className="h-full">
-      <div className="h-full rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(53,71,95,0.08)]">
+      <div className="h-full rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(44,36,22,0.08)]">
         <p className="mb-2 font-heading text-lg font-bold text-ink">{title}</p>
         <p className="text-[13.5px] leading-[2] text-ink-soft">{body}</p>
       </div>

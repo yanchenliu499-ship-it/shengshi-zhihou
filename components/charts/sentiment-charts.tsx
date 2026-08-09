@@ -14,7 +14,7 @@ export function AttitudeChart() {
 
   const option = useMemo<echarts.EChartsOption>(() => {
     const keys = ["正向", "负向", "中性"];
-    const colors = ["#BF8567", "#791716", "#AA967E"];
+    const colors = ["#b8860b", "#8b1a1a", "#9b8e7a"];
     return {
       animationDuration: 600,
       tooltip: {
@@ -29,19 +29,19 @@ export function AttitudeChart() {
           return s;
         },
       },
-      legend: { data: keys, bottom: 0, textStyle: { color: "#5F2C21", fontSize: 11 } },
+      legend: { data: keys, bottom: 0, textStyle: { color: "#6b5e4a", fontSize: 11 } },
       grid: { top: 20, right: 30, bottom: 50, left: 50 },
       xAxis: {
         type: "category",
         data: data?.periods ?? [],
-        axisLabel: { color: "#5F2C21", fontSize: 11 },
-        axisLine: { lineStyle: { color: "rgba(170,150,126,0.35)" } },
+        axisLabel: { color: "#6b5e4a", fontSize: 11 },
+        axisLine: { lineStyle: { color: "#e0d8c8" } },
       },
       yAxis: {
         type: "value",
         max: 1,
-        axisLabel: { color: "#AA967E", formatter: (v: number) => `${v * 100}%` },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        axisLabel: { color: "#9b8e7a", formatter: (v: number) => `${v * 100}%` },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       series: keys.map((key, i) => ({
         name: key,
@@ -72,7 +72,7 @@ export function BlameChart() {
       data && data.blameAttribution.length > 0
         ? Object.keys(data.blameAttribution[0]).filter((k) => k !== "period")
         : ["安禄山", "玄宗失德", "制度缺陷", "天命", "其他"];
-    const colors = ["#791716", "#BF8567", "#BF8567", "#5F2C21", "#AA967E", "#35475F"];
+    const colors = ["#8b1a1a", "#c44d4d", "#b8860b", "#6b5e4a", "#9b8e7a", "#2c2416"];
     return {
       animationDuration: 600,
       tooltip: {
@@ -89,7 +89,7 @@ export function BlameChart() {
       legend: {
         data: keys,
         bottom: 0,
-        textStyle: { color: "#5F2C21", fontSize: 10 },
+        textStyle: { color: "#6b5e4a", fontSize: 10 },
         itemWidth: 12,
         itemHeight: 12,
       },
@@ -97,14 +97,14 @@ export function BlameChart() {
       xAxis: {
         type: "category",
         data: data?.periods ?? [],
-        axisLabel: { color: "#5F2C21", fontSize: 11 },
-        axisLine: { lineStyle: { color: "rgba(170,150,126,0.35)" } },
+        axisLabel: { color: "#6b5e4a", fontSize: 11 },
+        axisLine: { lineStyle: { color: "#e0d8c8" } },
       },
       yAxis: {
         type: "value",
         max: 0.4,
-        axisLabel: { color: "#AA967E", formatter: (v: number) => `${(v * 100).toFixed(0)}%` },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        axisLabel: { color: "#9b8e7a", formatter: (v: number) => `${(v * 100).toFixed(0)}%` },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
       },
       series: keys.map((key, i) => ({
         name: key,
@@ -150,23 +150,23 @@ export function KeywordTrendChart() {
       legend: {
         data: ["Senta 模型", "人工词典"],
         bottom: 0,
-        textStyle: { color: "#5F2C21", fontSize: 11 },
+        textStyle: { color: "#6b5e4a", fontSize: 11 },
       },
       grid: { top: 30, right: 30, bottom: 50, left: 50 },
       xAxis: {
         type: "category",
         data: trend.map((d) => d.period),
-        axisLabel: { color: "#5F2C21", fontSize: 11 },
-        axisLine: { lineStyle: { color: "rgba(170,150,126,0.35)" } },
+        axisLabel: { color: "#6b5e4a", fontSize: 11 },
+        axisLine: { lineStyle: { color: "#e0d8c8" } },
       },
       yAxis: {
         type: "value",
         min: -0.6,
         max: 0.6,
-        axisLabel: { color: "#AA967E" },
-        splitLine: { lineStyle: { color: "#E7E2D8" } },
+        axisLabel: { color: "#9b8e7a" },
+        splitLine: { lineStyle: { color: "#f0ebe0" } },
         name: "情感均值 (-1→+1)",
-        nameTextStyle: { color: "#AA967E", fontSize: 10 },
+        nameTextStyle: { color: "#9b8e7a", fontSize: 10 },
       },
       series: [
         {
@@ -174,27 +174,27 @@ export function KeywordTrendChart() {
           type: "line",
           data: trend.map((d) => d.avg),
           smooth: true,
-          lineStyle: { color: "#791716", width: 3 },
-          itemStyle: { color: "#791716" },
+          lineStyle: { color: "#8b1a1a", width: 3 },
+          itemStyle: { color: "#8b1a1a" },
           symbol: "circle",
           symbolSize: 12,
           label: {
             show: true,
             formatter: (p: { value?: unknown }) => Number(p.value ?? 0).toFixed(2),
-            color: "#791716",
+            color: "#8b1a1a",
             fontSize: 12,
             fontWeight: "bold",
           },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: "rgba(121,23,22,0.18)" },
-              { offset: 1, color: "rgba(121,23,22,0.02)" },
+              { offset: 0, color: "rgba(139,26,26,0.18)" },
+              { offset: 1, color: "rgba(139,26,26,0.02)" },
             ]),
           },
           markLine: {
             silent: true,
             symbol: "none",
-            data: [{ yAxis: 0, lineStyle: { color: "rgba(170,150,126,0.35)", type: "dashed" } }],
+            data: [{ yAxis: 0, lineStyle: { color: "#e0d8c8", type: "dashed" } }],
           },
         },
         {
@@ -202,8 +202,8 @@ export function KeywordTrendChart() {
           type: "line",
           data: lexicon.map((d) => d.avg),
           smooth: true,
-          lineStyle: { color: "#BF8567", width: 2.5, type: "dashed" },
-          itemStyle: { color: "#BF8567" },
+          lineStyle: { color: "#b8860b", width: 2.5, type: "dashed" },
+          itemStyle: { color: "#b8860b" },
           symbol: "diamond",
           symbolSize: 11,
         },
