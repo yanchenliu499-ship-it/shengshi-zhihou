@@ -268,14 +268,16 @@ export default function HomePage() {
         <PalaceTurn />
       </Section>
 
-      {/* 06 文本探索器 */}
+      {/* 06 文本探索器（书签弹窗） */}
       <Section id="texts">
         <SectionHeader
           num="06"
           title="文本探索器"
-          subtitle="逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索"
+          subtitle="点击右侧书签，逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索"
         />
-        <TextExplorer />
+        <div className="text-center">
+          <p className="text-sm text-ink-muted">→ 点击页面右侧的赭石色书签，打开文本探索面板</p>
+        </div>
       </Section>
 
       {/* 07 研究方法 */}
@@ -324,6 +326,7 @@ export default function HomePage() {
       </Section>
 
       <BottomNav />
+      <TextExplorer />
     </main>
   );
 }
