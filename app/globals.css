@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@source "../components/originkit";
+
+@theme {
+  --font-heading: "Noto Serif SC", "Songti SC", "SimSun", "STSong", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  /* ── 克制含蓄色调：缟羽 / 黛蓝 / 绛红 / 驼色 / 赭褐 / 赭石 / 竹青 / 石绿 ── */
+  --color-paper: #E7E2D8;
+  --color-paper-deep: #D8D2C6;
+  --color-card: #FDFCFA;
+  --color-ink: #35475F;
+  --color-ink-soft: #5F2C21;
+  --color-ink-muted: #AA967E;
+  --color-accent: #791716;
+  --color-accent-light: #BF8567;
+  --color-accent-soft: #F5EFEA;
+  --color-gold: #BF8567;
+  --color-gold-light: #F0E8DF;
+  --color-line: rgba(170, 150, 126, 0.35);
+  --color-night: #1C2330;
+}
+
+:root {
+  --bg-primary: #FDFCFA;
+  --bg-secondary: #E7E2D8;
+  --bg-card: #FDFCFA;
+  --text-primary: #35475F;
+  --text-secondary: #5F2C21;
+  --text-muted: #AA967E;
+  --accent: #791716;
+  --accent-light: #BF8567;
+  --accent-soft: #F5EFEA;
+  --gold: #BF8567;
+  --gold-light: #F0E8DF;
+  --border: rgba(170, 150, 126, 0.35);
+  --shadow: 0 2px 12px rgba(53, 71, 95, 0.06);
+  --shadow-lg: 0 8px 32px rgba(53, 71, 95, 0.10);
+  --radius: 2px;
+  --radius-lg: 4px;
+  --max-width: 1200px;
+}
+
+html {
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  vertical-align: middle;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+  border: 0 solid #e5e7eb;
+  cursor: pointer;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* 赭石回纹纹样（深色区背景装饰） */
+.reticent-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23BF8567' stroke-width='1'%3E%3Cpath d='M12 12h16v16H12zM16 16h8v8h-8z'/%3E%3Cpath d='M36 36h16v16H36zM40 40h8v8h-8z'/%3E%3Cpath d='M52 8h4v4h-4zM8 52h4v4H8z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll hint bounce */
+@keyframes bounce-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+.animate-bounce-soft {
+  animation: bounce-soft 2s infinite;
+}
+
+/* Hero paper texture (SVG grain) */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Expandable panel arrow */
+.panel-chevron {
+  transition: transform 0.3s ease;
+}
+.panel-open .panel-chevron {
+  transform: rotate(180deg);
+}
+
+/* Custom scrollbar (subtle) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(53, 71, 95, 0.22);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(53, 71, 95, 0.36);
+}
+
+::selection {
+  background: rgba(121, 23, 22, 0.16);
+  color: var(--text-primary);
+}

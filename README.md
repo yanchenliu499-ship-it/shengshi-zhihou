@@ -1,0 +1,73 @@
+# 盛世之后 — 唐人视野中的王朝衰亡（Monumoir 风格重构）
+
+基于线上网站「盛世之后」内容与数据的 **Monumoir UI 风格移植版**。
+保留原站全部文字、图表数据与配色参考，套用 Monumoir 的界面语言：
+深色 Hero、固定玻璃拟态底部导航、全屏菜单、衬线大标题、章节编号体系、滚动进入动画、Lenis 平滑滚动。
+
+## 来源
+
+- 线上网站：https://199e5a44f62d44a0a0af17a8de9c9dac.bj10.agentos-app.net/
+- 原始资料：`site-info.md` / `text-content.md` / `color-palette.md` / `deployment-target.md` / `README.md`（用户提供）
+- 全部源码（HTML/CSS/JS）与 8 个图表数据 JSON、词云/主题距离图均从线上站抓取
+
+## 移植了什么
+
+| Monumoir 元素 | 本项目的落地 |
+|---|---|
+| 深色 Hero + 大字衬线标题 | `#101010` 深色渐变 + 宣纸纹理，「盛世之后」48–96px Noto Serif SC |
+| 滚动提示按钮（Wake a Statue） | 首屏下方「向下探索 ↓」，滚动后淡出 |
+| 固定三列玻璃拟态底部导航 | 回到顶部 / 「盛世之后」字标 / 菜单 |
+| 全屏菜单（大字号编号链接） | 01–06 板块导航，Lenis 平滑滚动到锚点 |
+| 章节编号体系（01/02…） | 研究问题 / 数据分析 / 四阶段演变 / 文本探索器 / 研究方法 / 团队 |
+| 滚动进入动画 | IntersectionObserver reveal（淡入上移，逐卡延迟） |
+| Lenis 平滑滚动 | lerp 0.09 平滑滚动 |
+| 卡片 + 阴影 + 圆角 | 图表卡片 `rounded-2xl` + 柔和阴影 |
+| 深色章节穿插 | 03 四阶段演变整体为深色区（同 Monumoir Map 段） |
+
+## 保留了什么
+
+- **文字内容**：全部来自 `text-content.md` 与线上站（核心提问、四阶段、研究方法等）
+- **图表数据**：8 个 JSON（timeline/sentiment/topics/network/texts/poem_map/word_data/period_bubbles）
+- **图表实现**：11 个可视化模块全部用 ECharts 重绘，保留原交互（散点点击弹诗歌卡片、网络图拖拽缩放、桑基图、筛选探索器）
+- **色调参考**：沿用线上站学术配色（朱砂红 `#8b1a1a`、金 `#b8860b`、米白 `#faf7f2`、深棕 `#2c2416`、四时期配色）
+- **品牌字**：Noto Serif SC（思源宋体）
+
+## 11 个可视化模块
+
+1. 📈 情感散点图 · 点击查看诗歌（444 首，Senta BiLSTM 模型情感分值）
+2. 态度构成演变（堆叠柱状图）
+3. 归因对象变迁（折线图）
+4. 主题流变 · 桑基图
+5. 情感趋势（Senta 模型 vs 人工词典 双方法对照）
+6. 人物—事件话语网络（力导向图，26 节点 28 边）
+7. 📋 LDA 主题详情表（20 主题）
+8. 📊 高频词与情感分值表
+9. 🫧 四时期词频气泡图（4 个力导向图）
+10. ☁️ 四阶段词云（4 图）
+11. 🔬 LDA 主题间距离图
+
+## 运行与部署
+
+```bash
+pnpm install
+pnpm dev        # 开发 http://localhost:3000
+pnpm build      # 生产构建（output: export 静态导出到 out/）
+```
+
+静态导出 `out/` 可直接部署到 GitHub Pages / Vercel / Nginx。
+
+## 目录
+
+```
+app/            Next.js 页面（单页 + 布局）
+components/     Hero、底部导航、时间轴、文本探索器、ECharts 图表组件、弹窗
+lib/            数据类型与常量（配色、时期顺序）
+public/data/    8 个图表数据 JSON（线上站抓取）
+public/img/     词云 ×4 + LDA 主题间距离图
+out/            静态导出产物
+```
+
+## 已知说明
+
+- 图表配色与线上站一致；深浅色区按 Monumoir 节奏重排（数据分析区浅色、四阶段深色）
+- 未包含音频/3D（内容站无需）；「团队」信息沿用线上站占位文案

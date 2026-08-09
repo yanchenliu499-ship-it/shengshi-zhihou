@@ -1,0 +1,1964 @@
+{
+  "periods": [
+    {
+      "period": "肃宗—代宗",
+      "poem_count": 213,
+      "words": [
+        {
+          "word": "幕府",
+          "freq": 55,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 18
+            },
+            {
+              "name": "高適",
+              "count": 7
+            },
+            {
+              "name": "刘长卿",
+              "count": 6
+            },
+            {
+              "name": "钱起",
+              "count": 4
+            },
+            {
+              "name": "岑参",
+              "count": 3
+            },
+            {
+              "name": "韩翃",
+              "count": 3
+            },
+            {
+              "name": "李白",
+              "count": 2
+            },
+            {
+              "name": "李嘉祐",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "word": "天子",
+          "freq": 20,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 13
+            },
+            {
+              "name": "李白",
+              "count": 4
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            },
+            {
+              "name": "独孤及",
+              "count": 1
+            },
+            {
+              "name": "顾况",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "幽州",
+          "freq": 16,
+          "poets": [
+            {
+              "name": "李白",
+              "count": 3
+            },
+            {
+              "name": "韩翃",
+              "count": 3
+            },
+            {
+              "name": "张继",
+              "count": 2
+            },
+            {
+              "name": "刘长卿",
+              "count": 1
+            },
+            {
+              "name": "孟云卿",
+              "count": 1
+            },
+            {
+              "name": "韦应物",
+              "count": 1
+            },
+            {
+              "name": "皇甫曾",
+              "count": 1
+            },
+            {
+              "name": "高適",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "豺狼",
+          "freq": 15,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 8
+            },
+            {
+              "name": "高適",
+              "count": 2
+            },
+            {
+              "name": "刘商",
+              "count": 2
+            },
+            {
+              "name": "王昌龄",
+              "count": 1
+            },
+            {
+              "name": "李白",
+              "count": 1
+            },
+            {
+              "name": "皇甫冉",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "风尘",
+          "freq": 15,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 9
+            },
+            {
+              "name": "高適",
+              "count": 2
+            },
+            {
+              "name": "刘长卿",
+              "count": 1
+            },
+            {
+              "name": "贾至",
+              "count": 1
+            },
+            {
+              "name": "严维",
+              "count": 1
+            },
+            {
+              "name": "卢纶",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "兵革",
+          "freq": 12,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 7
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            },
+            {
+              "name": "高適",
+              "count": 1
+            },
+            {
+              "name": "元结",
+              "count": 1
+            },
+            {
+              "name": "戎昱",
+              "count": 1
+            },
+            {
+              "name": "袁高",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "乾坤",
+          "freq": 12,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 10
+            },
+            {
+              "name": "高適",
+              "count": 1
+            },
+            {
+              "name": "钱起",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "将军",
+          "freq": 11,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 5
+            },
+            {
+              "name": "高適",
+              "count": 3
+            },
+            {
+              "name": "李白",
+              "count": 1
+            },
+            {
+              "name": "李端",
+              "count": 1
+            },
+            {
+              "name": "崔峒",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "妖氛",
+          "freq": 11,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 4
+            },
+            {
+              "name": "李白",
+              "count": 3
+            },
+            {
+              "name": "钱起",
+              "count": 2
+            },
+            {
+              "name": "韦应物",
+              "count": 1
+            },
+            {
+              "name": "贾至",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "故人",
+          "freq": 11,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 4
+            },
+            {
+              "name": "高適",
+              "count": 2
+            },
+            {
+              "name": "李白",
+              "count": 1
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            },
+            {
+              "name": "皇甫冉",
+              "count": 1
+            },
+            {
+              "name": "李端",
+              "count": 1
+            },
+            {
+              "name": "皎然",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "尚书",
+          "freq": 11,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 4
+            },
+            {
+              "name": "贾至",
+              "count": 2
+            },
+            {
+              "name": "韩翃",
+              "count": 2
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            },
+            {
+              "name": "戎昱",
+              "count": 1
+            },
+            {
+              "name": "刘商",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "平生",
+          "freq": 11,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 6
+            },
+            {
+              "name": "高適",
+              "count": 2
+            },
+            {
+              "name": "贾至",
+              "count": 1
+            },
+            {
+              "name": "钱起",
+              "count": 1
+            },
+            {
+              "name": "卢纶",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "朔方",
+          "freq": 10,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 7
+            },
+            {
+              "name": "贾至",
+              "count": 2
+            },
+            {
+              "name": "李白",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "忠臣",
+          "freq": 10,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 5
+            },
+            {
+              "name": "李白",
+              "count": 1
+            },
+            {
+              "name": "钱起",
+              "count": 1
+            },
+            {
+              "name": "戎昱",
+              "count": 1
+            },
+            {
+              "name": "戴叔伦",
+              "count": 1
+            },
+            {
+              "name": "李端",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "君臣",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 4
+            },
+            {
+              "name": "吴筠",
+              "count": 2
+            },
+            {
+              "name": "储光羲",
+              "count": 1
+            },
+            {
+              "name": "李华",
+              "count": 1
+            },
+            {
+              "name": "高適",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "猛虎",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "李白",
+              "count": 4
+            },
+            {
+              "name": "杜甫",
+              "count": 3
+            },
+            {
+              "name": "孟云卿",
+              "count": 1
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "黄金",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "李白",
+              "count": 4
+            },
+            {
+              "name": "杜甫",
+              "count": 3
+            },
+            {
+              "name": "高適",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "word": "草木",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "李白",
+              "count": 2
+            },
+            {
+              "name": "杜甫",
+              "count": 2
+            },
+            {
+              "name": "储光羲",
+              "count": 1
+            },
+            {
+              "name": "韦应物",
+              "count": 1
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            },
+            {
+              "name": "袁高",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "知己",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "刘长卿",
+              "count": 2
+            },
+            {
+              "name": "高適",
+              "count": 2
+            },
+            {
+              "name": "岑参",
+              "count": 1
+            },
+            {
+              "name": "殷少野",
+              "count": 1
+            },
+            {
+              "name": "钱起",
+              "count": 1
+            },
+            {
+              "name": "韩翃",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "渔阳",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 5
+            },
+            {
+              "name": "刘长卿",
+              "count": 1
+            },
+            {
+              "name": "皇甫曾",
+              "count": 1
+            },
+            {
+              "name": "高適",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "浮云",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "李白",
+              "count": 4
+            },
+            {
+              "name": "杜甫",
+              "count": 3
+            },
+            {
+              "name": "刘长卿",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "道路",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 7
+            },
+            {
+              "name": "刘长卿",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "天地",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "李白",
+              "count": 3
+            },
+            {
+              "name": "杜甫",
+              "count": 3
+            },
+            {
+              "name": "刘长卿",
+              "count": 1
+            },
+            {
+              "name": "高適",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "主人",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 5
+            },
+            {
+              "name": "李白",
+              "count": 1
+            },
+            {
+              "name": "韦应物",
+              "count": 1
+            },
+            {
+              "name": "高適",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "壮士",
+          "freq": 8,
+          "poets": [
+            {
+              "name": "杜甫",
+              "count": 6
+            },
+            {
+              "name": "李白",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "period": "德宗—宪宗",
+      "poem_count": 100,
+      "words": [
+        {
+          "word": "天宝",
+          "freq": 20,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 7
+            },
+            {
+              "name": "白居易",
+              "count": 7
+            },
+            {
+              "name": "王建",
+              "count": 3
+            },
+            {
+              "name": "刘禹锡",
+              "count": 1
+            },
+            {
+              "name": "孟郊",
+              "count": 1
+            },
+            {
+              "name": "姚合",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "豺狼",
+          "freq": 16,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 9
+            },
+            {
+              "name": "孟郊",
+              "count": 4
+            },
+            {
+              "name": "武元衡",
+              "count": 1
+            },
+            {
+              "name": "刘叉",
+              "count": 1
+            },
+            {
+              "name": "李涉",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "天子",
+          "freq": 16,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 5
+            },
+            {
+              "name": "刘禹锡",
+              "count": 3
+            },
+            {
+              "name": "白居易",
+              "count": 3
+            },
+            {
+              "name": "韩愈",
+              "count": 1
+            },
+            {
+              "name": "张籍",
+              "count": 1
+            },
+            {
+              "name": "李贺",
+              "count": 1
+            },
+            {
+              "name": "刘叉",
+              "count": 1
+            },
+            {
+              "name": "李涉",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "法曲",
+          "freq": 12,
+          "poets": [
+            {
+              "name": "白居易",
+              "count": 10
+            },
+            {
+              "name": "元稹",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "word": "天地",
+          "freq": 10,
+          "poets": [
+            {
+              "name": "孟郊",
+              "count": 5
+            },
+            {
+              "name": "杨巨源",
+              "count": 1
+            },
+            {
+              "name": "韩愈",
+              "count": 1
+            },
+            {
+              "name": "欧阳詹",
+              "count": 1
+            },
+            {
+              "name": "元稹",
+              "count": 1
+            },
+            {
+              "name": "白居易",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "皇帝",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "韩愈",
+              "count": 5
+            },
+            {
+              "name": "刘禹锡",
+              "count": 2
+            },
+            {
+              "name": "元稹",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "word": "将军",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "张籍",
+              "count": 3
+            },
+            {
+              "name": "白居易",
+              "count": 2
+            },
+            {
+              "name": "韩愈",
+              "count": 1
+            },
+            {
+              "name": "柳宗元",
+              "count": 1
+            },
+            {
+              "name": "刘禹锡",
+              "count": 1
+            },
+            {
+              "name": "元稹",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "君王",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "白居易",
+              "count": 5
+            },
+            {
+              "name": "元稹",
+              "count": 3
+            },
+            {
+              "name": "刘禹锡",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "主人",
+          "freq": 9,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 6
+            },
+            {
+              "name": "吕温",
+              "count": 2
+            },
+            {
+              "name": "刘禹锡",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "幽州",
+          "freq": 7,
+          "poets": [
+            {
+              "name": "李益",
+              "count": 2
+            },
+            {
+              "name": "王建",
+              "count": 2
+            },
+            {
+              "name": "窦巩",
+              "count": 1
+            },
+            {
+              "name": "杨巨源",
+              "count": 1
+            },
+            {
+              "name": "韩愈",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "乐府",
+          "freq": 7,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "word": "霓裳",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "白居易",
+              "count": 3
+            },
+            {
+              "name": "元稹",
+              "count": 2
+            },
+            {
+              "name": "李益",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "道路",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 3
+            },
+            {
+              "name": "王建",
+              "count": 2
+            },
+            {
+              "name": "孟郊",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "幕府",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "刘禹锡",
+              "count": 3
+            },
+            {
+              "name": "武元衡",
+              "count": 2
+            },
+            {
+              "name": "张籍",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "天道",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 5
+            },
+            {
+              "name": "孟郊",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "新题",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "word": "君子",
+          "freq": 5,
+          "poets": [
+            {
+              "name": "孟郊",
+              "count": 2
+            },
+            {
+              "name": "王建",
+              "count": 1
+            },
+            {
+              "name": "刘叉",
+              "count": 1
+            },
+            {
+              "name": "白居易",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "颜色",
+          "freq": 5,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 2
+            },
+            {
+              "name": "刘禹锡",
+              "count": 1
+            },
+            {
+              "name": "白居易",
+              "count": 1
+            },
+            {
+              "name": "李涉",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "烟尘",
+          "freq": 5,
+          "poets": [
+            {
+              "name": "孟郊",
+              "count": 2
+            },
+            {
+              "name": "元稹",
+              "count": 2
+            },
+            {
+              "name": "白居易",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "芙蓉",
+          "freq": 5,
+          "poets": [
+            {
+              "name": "白居易",
+              "count": 4
+            },
+            {
+              "name": "元稹",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "道长",
+          "freq": 5,
+          "poets": [
+            {
+              "name": "元稹",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "word": "贤人",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "孟郊",
+              "count": 3
+            },
+            {
+              "name": "王建",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "忠臣",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "卢群",
+              "count": 1
+            },
+            {
+              "name": "韩愈",
+              "count": 1
+            },
+            {
+              "name": "元稹",
+              "count": 1
+            },
+            {
+              "name": "白居易",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "门户",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "韩愈",
+              "count": 2
+            },
+            {
+              "name": "元稹",
+              "count": 1
+            },
+            {
+              "name": "白居易",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "官军",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "刘禹锡",
+              "count": 3
+            },
+            {
+              "name": "张籍",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "period": "穆宗—文宗",
+      "poem_count": 40,
+      "words": [
+        {
+          "word": "天子",
+          "freq": 10,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 3
+            },
+            {
+              "name": "李商隐",
+              "count": 3
+            },
+            {
+              "name": "温庭筠",
+              "count": 2
+            },
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "天宝",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 2
+            },
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "李商隐",
+              "count": 1
+            },
+            {
+              "name": "薛逢",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "清宫",
+          "freq": 6,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 2
+            },
+            {
+              "name": "李商隐",
+              "count": 2
+            },
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "霓裳",
+          "freq": 5,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "荔枝",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 2
+            },
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "开元",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "李商隐",
+              "count": 1
+            },
+            {
+              "name": "薛逢",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "烟尘",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "零落",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "离宫",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "鹦鹉",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "渔阳",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "红粉",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "李商隐",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "珊瑚",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "杜牧",
+              "count": 1
+            },
+            {
+              "name": "李商隐",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "故事",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "薛逢",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "开泰",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "李商隐",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "花萼",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "杜牧",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "神仙",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "舒元舆",
+              "count": 1
+            },
+            {
+              "name": "杜牧",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "妖星",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "顾非熊",
+              "count": 1
+            },
+            {
+              "name": "温庭筠",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "御宇",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "上位",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "名实",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "宪章",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "甲胄",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "因缘",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "司署",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "张祜",
+              "count": 1
+            },
+            {
+              "name": "赵嘏",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "period": "武宗—哀帝",
+      "poem_count": 60,
+      "words": [
+        {
+          "word": "天子",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "韦庄",
+              "count": 1
+            },
+            {
+              "name": "黄滔",
+              "count": 1
+            },
+            {
+              "name": "崔道融",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "无人",
+          "freq": 4,
+          "poets": [
+            {
+              "name": "崔橹",
+              "count": 1
+            },
+            {
+              "name": "韦庄",
+              "count": 1
+            },
+            {
+              "name": "陈陶",
+              "count": 1
+            },
+            {
+              "name": "贯休",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "升平",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "word": "瑞气",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 2
+            },
+            {
+              "name": "罗隐",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "乾坤",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "贯休",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "开元",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "韦庄",
+              "count": 1
+            },
+            {
+              "name": "徐夤",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "丞相",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "陆龟蒙",
+              "count": 1
+            },
+            {
+              "name": "徐夤",
+              "count": 1
+            },
+            {
+              "name": "贯休",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "故人",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "罗隐",
+              "count": 1
+            },
+            {
+              "name": "崔道融",
+              "count": 1
+            },
+            {
+              "name": "贯休",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "人心",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "贯休",
+              "count": 2
+            },
+            {
+              "name": "罗隐",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "新诗",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "黄滔",
+              "count": 2
+            },
+            {
+              "name": "韦庄",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "无尘",
+          "freq": 3,
+          "poets": [
+            {
+              "name": "贯休",
+              "count": 2
+            },
+            {
+              "name": "崔橹",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "鸳瓦",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "李咸用",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "一物",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "word": "甲子",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "罗隐",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "歌谣",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "李咸用",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "鹪鹩",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "徐夤",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "文章",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "杜荀鹤",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "才子",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "薛能",
+              "count": 1
+            },
+            {
+              "name": "李咸用",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "銮驾",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "高骈",
+              "count": 1
+            },
+            {
+              "name": "崔道融",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "贵妃",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "于濆",
+              "count": 1
+            },
+            {
+              "name": "罗隐",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "倾国",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "于濆",
+              "count": 1
+            },
+            {
+              "name": "张蠙",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "风云",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "贯休",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "麋鹿",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "罗隐",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "万乘",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "崔道融",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "word": "马嘶",
+          "freq": 2,
+          "poets": [
+            {
+              "name": "皮日休",
+              "count": 1
+            },
+            {
+              "name": "黄滔",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
