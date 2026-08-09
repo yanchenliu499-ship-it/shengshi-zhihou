@@ -14,6 +14,7 @@ import { goWithTransition, type TransitionMode } from "@/components/tang-transit
 interface DeckContextValue {
   index: number;
   total: number;
+  registerTotal: (n: number) => void;
   goTo: (i: number, mode?: TransitionMode) => void;
   next: (mode?: TransitionMode) => void;
   prev: (mode?: TransitionMode) => void;
@@ -37,6 +38,9 @@ export function DeckProvider({ children }: { children: ReactNode }) {
   const [busy, setBusy] = useState(false);
 
   const clamp = useCallback((i: number) => Math.max(0, Math.min(total - 1, i)), [total]);
+  const registerTotal = useCallback((n: number) => {
+    setTotal((prev) => (prev === n ? prev : n));
+  }, []);
 
   const goTo = useCallback(
     (i: number, mode: TransitionMode = "baoxiang") => {
@@ -64,20 +68,19 @@ export function DeckProvider({ children }: { children: ReactNode }) {
       if (typeof d?.index === "number") setIndex(clamp(d.index));
       setBusy(false);
     };
-    const onTotal = (e: Event) => {
-      const d = (e as CustomEvent<{ total?: number }>).detail;
-      if (typeof d?.total === "number" && d.total > 0) setTotal(d.total);
-    };
     window.addEventListener("monumoir:tang-switched", onSwitched);
-    window.addEventListener("monumoir:deck-total", onTotal);
-    return () => {
-      window.removeEventListener("monumoir:tang-switched", onSwitched);
-      window.removeEventListener("monumoir:deck-total", onTotal);
-    };
+    return () => window.removeEventListener("monumoir:tang-switched", onSwitched);
   }, [clamp]);
 
+  // 转场保险：若 5 秒内未收到 tang-switched，强制解除忙碌，避免界面卡死
+  useEffect(() => {
+    if (!busy) return;
+    const t = window.setTimeout(() => setBusy(false), 5000);
+    return () => window.clearTimeout(t);
+  }, [busy]);
+
   return (
-    <DeckContext.Provider value={{ index, total, goTo, next, prev }}>
+    <DeckContext.Provider value={{ index, total, registerTotal, goTo, next, prev }}>
       {children}
     </DeckContext.Provider>
   );
@@ -87,14 +90,12 @@ export function DeckProvider({ children }: { children: ReactNode }) {
  * 多屏容器：所有屏常驻 DOM（visibility 切换，保证隐藏屏中 ECharts 尺寸正常）。
  */
 export function Deck({ children }: { children: ReactNode }) {
-  const { index, total, goTo } = useDeck();
+  const { index, registerTotal } = useDeck();
   const screens = Children.toArray(children);
 
   useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent("monumoir:deck-total", { detail: { total: screens.length } })
-    );
-  }, [screens.length]);
+    registerTotal(screens.length);
+  }, [screens.length, registerTotal]);
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#101010]">
