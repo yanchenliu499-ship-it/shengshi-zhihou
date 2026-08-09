@@ -226,6 +226,13 @@ export function TextExplorer() {
     return () => window.removeEventListener("keydown", onKey);
   }, [selectedPoem]);
 
+  // 支持外部（如 Deck 文本探索器引导页）通过事件打开面板
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener("text-explorer:open", onOpen);
+    return () => window.removeEventListener("text-explorer:open", onOpen);
+  }, []);
+
   const openPanel = useCallback(() => setOpen(true), []);
   const closePanel = useCallback(() => {
     setOpen(false);

@@ -6,6 +6,7 @@ import { TangTransition } from "@/components/tang-transition";
 import { Timeline } from "@/components/timeline";
 import { PalaceTurn } from "@/components/palace-turn";
 import { TextExplorer } from "@/components/text-explorer";
+import { TextExplorerGuide } from "@/components/text-explorer-guide";
 import { ZhongxingSection } from "@/components/zhongxing";
 import { PeriodHoverReveal } from "@/components/originkit/period-hover-reveal";
 import { ScatterChart } from "@/components/charts/scatter-chart";
@@ -211,7 +212,7 @@ export default function HomePage() {
 
         {/* ============ 屏 7 · 文本探索器 ============ */}
         <Screen num="07" title="文本探索器" subtitle="逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索">
-          <TextExplorer />
+          <TextExplorerGuide />
         </Screen>
 
         {/* ============ 屏 8 · 研究方法 ============ */}
@@ -251,6 +252,9 @@ export default function HomePage() {
           </footer>
         </Screen>
       </Deck>
+
+      {/* 全局右侧书签：文本探索器（任意屏可打开） */}
+      <TextExplorer />
 
       <TopBar />
       <BottomNav />
