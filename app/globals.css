@@ -166,14 +166,14 @@ html.lenis body {
   color: var(--text-primary);
 }
 
-/* ── 书签光标：赭石金底 + 白边 + 唐代签条造型 ── */
+/* ── 书签光标：赭石金底 + 白边 + 唐代签条造型（20×28）── */
 * {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'%3E%3Cdefs%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1.5' flood-color='%2335475F' flood-opacity='0.18'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23shadow)'%3E%3Cpath d='M4 0h20l-2 6v30l-8-4-8 4V6z' fill='%23BF8567' stroke='%23FDFCFA' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M4 8h20' stroke='%23FDFCFA' stroke-width='0.8' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E") 8 4, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 20 28'%3E%3Cdefs%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1' flood-color='%2335475F' flood-opacity='0.15'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M3 0h14l-1.5 4v22l-5.5-3-5.5 3V4z' fill='%23BF8567' stroke='%23FDFCFA' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M3 6h14' stroke='%23FDFCFA' stroke-width='0.6' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E") 5 3, auto;
 }
 
 a, button, [role="button"], input[type="submit"], .btn,
 select, summary, label[for], [tabindex]:not([tabindex="-1"]) {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'%3E%3Cdefs%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='2' flood-color='%2335475F' flood-opacity='0.22'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23shadow)'%3E%3Cpath d='M4 0h20l-2 6v30l-8-4-8 4V6z' fill='%23791716' stroke='%23FDFCFA' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M4 8h20' stroke='%23FDFCFA' stroke-width='0.8' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E") 8 4, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 20 28'%3E%3Cdefs%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1.5' flood-color='%2335475F' flood-opacity='0.18'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M3 0h14l-1.5 4v22l-5.5-3-5.5 3V4z' fill='%23791716' stroke='%23FDFCFA' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M3 6h14' stroke='%23FDFCFA' stroke-width='0.6' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E") 5 3, pointer;
 }
 
 input[type="text"],
@@ -181,5 +181,5 @@ input[type="email"],
 input[type="search"],
 textarea,
 [contenteditable="true"] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 28 40'%3E%3Cdefs%3E%3Cfilter id='shadow'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1.5' flood-color='%2335475F' flood-opacity='0.18'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23shadow)'%3E%3Cpath d='M4 0h20l-2 6v30l-8-4-8 4V6z' fill='%23BF8567' stroke='%23FDFCFA' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cline x1='12' y1='14' x2='22' y2='24' stroke='%23FDFCFA' stroke-width='1.2' opacity='0.7'/%3E%3C/g%3E%3C/svg%3E") 8 4, text;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 20 28'%3E%3Cdefs%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='1' stdDeviation='1' flood-color='%2335475F' flood-opacity='0.15'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M3 0h14l-1.5 4v22l-5.5-3-5.5 3V4z' fill='%23BF8567' stroke='%23FDFCFA' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cline x1='9' y1='10' x2='16' y2='17' stroke='%23FDFCFA' stroke-width='1' opacity='0.6'/%3E%3C/g%3E%3C/svg%3E") 5 3, text;
 }
