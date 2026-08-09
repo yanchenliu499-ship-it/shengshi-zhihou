@@ -166,6 +166,10 @@ export function Deck({ children }: { children: ReactNode }) {
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#101010]">
+      {/* 唐风氛围层：绢丝纹 / 颗粒 / 暗角 / 折痕 */}
+      <div className="deck-atmosphere pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
+      <div className="deck-vignette pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
+      <div className="deck-fold pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
       {screens.map((screen, i) => (
         <div
           key={i}
@@ -192,6 +196,7 @@ export function Screen({
   subtitle,
   dark = false,
   pattern,
+  bgImage,
   children,
   nextLabel = "下一屏",
   showNext = true,
@@ -202,6 +207,7 @@ export function Screen({
   subtitle?: string;
   dark?: boolean;
   pattern?: TangMotif;
+  bgImage?: string;
   children: ReactNode;
   nextLabel?: string;
   showNext?: boolean;
@@ -216,6 +222,11 @@ export function Screen({
       }`}
     >
       {pattern && <TangPattern motif={pattern} dark={dark} />}
+      {bgImage && (
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+          <img src={bgImage} alt="" className="kenburns-faint h-full w-full object-cover" />
+        </div>
+      )}
       <div className="relative mx-auto flex min-h-full w-full max-w-[1200px] flex-col px-4 py-8 md:px-6 md:py-10">
         {title && (
           <header className="mb-6 shrink-0 text-center md:mb-8">

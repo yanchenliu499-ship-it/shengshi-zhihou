@@ -7,8 +7,8 @@ import { Timeline } from "@/components/timeline";
 import { PalaceTurn } from "@/components/palace-turn";
 import { TextExplorer } from "@/components/text-explorer";
 import { TextExplorerGuide } from "@/components/text-explorer-guide";
-import { TangGallery } from "@/components/tang-gallery";
 import { ZhongxingSection } from "@/components/zhongxing";
+import { BASE_PATH } from "@/lib/data";
 import { PeriodHoverReveal } from "@/components/originkit/period-hover-reveal";
 import { ScatterChart } from "@/components/charts/scatter-chart";
 import { AttitudeChart, BlameChart, KeywordTrendChart } from "@/components/charts/sentiment-charts";
@@ -77,7 +77,7 @@ function ChartCard({
   className?: string;
 }) {
   return (
-    <div className={`rounded-2xl bg-white/65 p-4 shadow-[0_1px_0_rgba(44,36,22,0.04)] ring-1 ring-line/40 backdrop-blur-[2px] md:p-5 ${className}`}>
+    <div className={`art-card rounded-2xl p-4 md:p-5 ${className}`}>
       <div className="mb-3 flex items-baseline gap-2.5">
         {num && (
           <span className="font-heading text-sm font-bold tracking-[0.2em] text-accent/60">{num}</span>
@@ -109,7 +109,7 @@ export default function HomePage() {
               </p>
               <VineBand className="mx-auto mt-3 h-5 w-56 max-w-full opacity-80" tone="gold" />
             </div>
-            <div className="relative overflow-hidden rounded-2xl border border-line bg-card p-6 shadow-[0_2px_12px_rgba(44,36,22,0.08)] md:p-7">
+            <div className="art-card relative overflow-hidden rounded-2xl p-6 md:p-7">
               <div className="absolute inset-y-0 left-0 w-1" style={{ background: "linear-gradient(to bottom, #b8860b, #8b1a1a)" }} aria-hidden="true" />
               <p className="mb-3 pl-3 font-bold text-ink">研究路径</p>
               <p className="pl-3 text-[14px] leading-[2.1] text-ink-soft">
@@ -186,7 +186,7 @@ export default function HomePage() {
         </Screen>
 
         {/* ============ 屏 4 · 四阶段演变（深色） ============ */}
-        <Screen num="04" title="四阶段演变" dark pattern="rosette" subtitle="将中晚唐历史划分为四个时期，追踪安史之乱叙事的代际演变——从战争创伤到历史典故化">
+        <Screen num="04" title="四阶段演变" dark pattern="rosette" bgImage={`${BASE_PATH}/img/tang/paintings/painting-2.jpg`} subtitle="将中晚唐历史划分为四个时期，追踪安史之乱叙事的代际演变——从战争创伤到历史典故化">
           <Timeline />
           <div className="mt-6 rounded-2xl border border-white/10 bg-[#14110c] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.35)] md:p-5">
             <h3 className="font-heading text-lg font-bold text-[#f7f4ec] md:text-xl">悬停查看各时期词云</h3>
@@ -203,6 +203,27 @@ export default function HomePage() {
           subtitle="55 首含「中兴」诗作构成独特子语料库：肃宗—代宗 15 首 → 德宗—宪宗骤降至 2 首 → 穆宗—文宗回升 8 首 → 武宗—哀帝激增至 24 首——王朝将亡，呼唤愈发迫切，却始终未成"
         >
           <ZhongxingSection />
+          {/* 古画装饰封面 */}
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {[
+              { n: 1, t: "唐画 · 壹" },
+              { n: 3, t: "唐画 · 叁" },
+              { n: 5, t: "唐画 · 伍" },
+              { n: 6, t: "唐画 · 陆" },
+            ].map((it) => (
+              <figure key={it.n} className="art-card group overflow-hidden rounded-lg p-0">
+                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                  <img
+                    src={`${BASE_PATH}/img/tang/paintings/painting-${it.n}.jpg`}
+                    alt={it.t}
+                    loading="lazy"
+                    className="kenburns-faint h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                  />
+                </div>
+                <figcaption className="py-2 text-center text-[11px] tracking-[0.2em] text-ink-soft">{it.t}</figcaption>
+              </figure>
+            ))}
+          </div>
         </Screen>
 
         {/* ============ 屏 6 · 从战争到宫闱 ============ */}
@@ -240,13 +261,11 @@ export default function HomePage() {
           </div>
         </Screen>
 
-        {/* ============ 屏 9 · 唐代绘画 ============ */}
-        <Screen num="09" title="唐代绘画" pattern="vine" subtitle="传世唐代绢本绘画——点击封面展开画作，画中花鸟人物随光影缓缓浮动，古意盎然而又生机流淌">
-          <TangGallery />
-        </Screen>
-
-        {/* ============ 屏 10 · 结语 ============ */}
-        <Screen num="10" title="结语" dark pattern="rosette" showNext={false} subtitle="安史之乱主题的《全唐诗》诗歌整体呈消极情感基调；贯穿始终的「中兴」「太平」「天子」寄托着希望，消极词汇却前后剧变——唐人四十余年呼唤中兴，终唐之世未再复兴，中晚唐诗中的「中兴」，始终是未完成的期待。">
+        {/* ============ 屏 9 · 结语 ============ */}
+        <Screen num="09" title="结语" dark pattern="rosette" bgImage={`${BASE_PATH}/img/tang/paintings/painting-4.jpg`} showNext={false} subtitle="安史之乱主题的《全唐诗》诗歌整体呈消极情感基调；贯穿始终的「中兴」「太平」「天子」寄托着希望，消极词汇却前后剧变——唐人四十余年呼唤中兴，终唐之世未再复兴，中晚唐诗中的「中兴」，始终是未完成的期待。">
+          <p className="writing-vertical pointer-events-none select-none font-heading text-sm tracking-[0.4em] text-[#c44d4d]/70" aria-hidden="true">
+            安史乱后 · 唐人之哀 · 中兴未成
+          </p>
           <div className="flex w-full max-w-[600px] flex-1 flex-col items-center justify-center gap-6">
             <div className="flex w-full flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
               <div className="font-heading text-lg font-bold text-white">刘彦辰</div>

@@ -3,6 +3,7 @@ import { Noto_Serif_SC } from "next/font/google";
 import { BASE_PATH } from "@/lib/data";
 import "./globals.css";
 import { LenisProvider } from "@/components/lenis-provider";
+import { AmbientSound } from "@/components/ambient-sound";
 
 const notoSerif = Noto_Serif_SC({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="zh-CN" className={notoSerif.variable}>
       <body>
         <LenisProvider>{children}</LenisProvider>
+        <AmbientSound />
       </body>
     </html>
   );
