@@ -46,7 +46,7 @@ export function TopBar() {
           />
           <div className="relative z-10 flex h-auto items-center justify-between px-5 py-4 md:px-8">
             <span className="text-xs tracking-wider text-white/40">盛世之后 · 观念流变</span>
-            <span className="font-heading text-lg text-white/70">Monumoir × 安史之乱</span>
+            <span className="font-heading text-lg text-white/70">盛世之后 · 唐人视野中的王朝衰亡</span>
             <button
               type="button"
               aria-label="关闭菜单"
@@ -75,11 +75,6 @@ export function TopBar() {
                 go(found ? found.index : 0, "ribbon");
               }}
             />
-          </div>
-          <div className="relative z-10 flex items-center justify-center gap-6 pb-10 pt-4 text-xs text-white/40">
-            <span>IDHFUS 2026 · 赛道一</span>
-            <span>·</span>
-            <span>中国人民大学信息资源管理学院</span>
           </div>
         </div>
       )}

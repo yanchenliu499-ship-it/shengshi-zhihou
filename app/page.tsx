@@ -236,19 +236,18 @@ export default function HomePage() {
 
         {/* ============ 屏 9 · 结语 ============ */}
         <Screen num="09" title="结语" dark showNext={false} subtitle="安史之乱主题的《全唐诗》诗歌整体呈消极情感基调；贯穿始终的「中兴」「太平」「天子」寄托着希望，消极词汇却前后剧变——唐人四十余年呼唤中兴，终唐之世未再复兴，中晚唐诗中的「中兴」，始终是未完成的期待。">
-          <div className="flex flex-1 flex-col items-center justify-center">
-            <p className="text-center text-sm italic text-white/40">（团队成员信息待补充）</p>
+          <div className="flex w-full max-w-[600px] flex-1 flex-col items-center justify-center gap-6">
+            <div className="flex w-full flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+              <div className="font-heading text-lg font-bold text-white">刘彦辰</div>
+              <div className="text-sm text-white/60">北京师范大学 2023级历史学（强基计划）专业本科生</div>
+            </div>
+            <div className="flex w-full flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+              <div className="font-heading text-lg font-bold text-white">张浩歌</div>
+              <div className="text-sm text-white/60">北京师范大学 2023级历史学（强基计划）专业本科生</div>
+            </div>
           </div>
           <footer className="mt-10 shrink-0 border-t border-white/10 pt-8 text-center text-xs leading-[2] text-white/40">
-            <p>首届大学生国际数字人文节（IDHFUS 2026）参展作品</p>
-            <p>主题：遗产·记忆·视界 &nbsp;|&nbsp; 赛道：自选主题</p>
-            <p>中国人民大学信息资源管理学院 · 数字人文研究院</p>
-            <p className="mt-2">
-              <a href="mailto:idhfus@ruc.edu.cn" className="text-[#c44d4d] underline-offset-2 hover:underline">
-                idhfus@ruc.edu.cn
-              </a>
-            </p>
-            <p className="mt-4 text-white/25">盛世之后 · 唐人视野中的王朝衰亡 — 宝相花 · 兵戈 · 敦煌飘带转场</p>
+            <p className="mt-4 text-white/25">盛世之后 · 唐人视野中的王朝衰亡</p>
           </footer>
         </Screen>
       </Deck>
