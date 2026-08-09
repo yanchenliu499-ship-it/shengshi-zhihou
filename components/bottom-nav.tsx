@@ -77,7 +77,7 @@ export function BottomNav() {
             <span className="text-xs tracking-wider text-white/40">
               盛世之后 · 观念流变
             </span>
-            <span className="font-heading text-lg text-white/70">Monumoir × 安史之乱</span>
+            <span className="font-heading text-lg text-white/70">盛世之后 · 唐人视野中的王朝衰亡</span>
             <button
               type="button"
               aria-label="关闭菜单"
@@ -106,15 +106,10 @@ export function BottomNav() {
             />
           </div>
 
-          <div className="relative z-10 flex items-center justify-center gap-6 pb-10 pt-4 text-xs text-white/40">
-            <span>IDHFUS 2026 · 赛道一</span>
-            <span>·</span>
-            <span>中国人民大学信息资源管理学院</span>
-          </div>
         </div>
       )}
 
-      {/* 底部导航栏（Monumoir 三列玻璃拟态） */}
+      {/* 底部导航栏 */}
       <div
         className={`fixed bottom-0 left-0 right-0 z-50 isolate grid grid-cols-3 items-center border-t py-1.5 px-5 backdrop-blur-xl transition-colors duration-[800ms] ease-out md:py-3 ${barStyle} ${
           open ? "border-white/10" : "border-line/60"

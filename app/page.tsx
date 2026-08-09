@@ -302,22 +302,18 @@ export default function HomePage() {
       {/* 08 团队 + 页脚 */}
       <Section id="team" dark className="!py-16" topGradient="linear-gradient(to bottom, #f0ebe0 0%, #101010 100%)">
         <SectionHeader num="08" title="团队成员" dark />
-        <p className="text-center text-sm italic text-white/40">
-          （团队成员信息待补充）
-        </p>
+        <div className="mx-auto max-w-[600px] space-y-6">
+          <div className="flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+            <div className="font-heading text-lg font-bold text-white">刘彦辰</div>
+            <div className="text-sm text-white/60">北京师范大学 2023级历史学（强基计划）专业本科生</div>
+          </div>
+          <div className="flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+            <div className="font-heading text-lg font-bold text-white">张浩歌</div>
+            <div className="text-sm text-white/60">北京师范大学 2023级历史学（强基计划）专业本科生</div>
+          </div>
+        </div>
         <footer className="mt-14 border-t border-white/10 pt-8 text-center text-xs leading-[2] text-white/40">
-          <p>首届大学生国际数字人文节（IDHFUS 2026）参展作品</p>
-          <p>主题：遗产·记忆·视界 &nbsp;|&nbsp; 赛道：自选主题</p>
-          <p>中国人民大学信息资源管理学院 · 数字人文研究院</p>
-          <p className="mt-2">
-            <a
-              href="mailto:idhfus@ruc.edu.cn"
-              className="text-[#c44d4d] underline-offset-2 hover:underline"
-            >
-              idhfus@ruc.edu.cn
-            </a>
-          </p>
-          <p className="mt-4 text-white/25">盛世之后 · 唐人视野中的王朝衰亡 — Monumoir 风格重构</p>
+          <p className="mt-4 text-white/25">盛世之后 · 唐人视野中的王朝衰亡</p>
         </footer>
       </Section>
 
