@@ -112,17 +112,33 @@ export function Deck({ children }: { children: ReactNode }) {
     let touchY = 0;
     const onWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) < 24) return;
-      // 屏内可滚动容器未到边界 → 让内部滚动，不切屏
       const t = e.target as HTMLElement | null;
-      const scroller = t?.closest
+      // 优先：鼠标下的可滚动容器；其次：当前屏内任意可滚动容器
+      let scroller = t?.closest
         ? (t.closest("[class*='overflow-y-auto']") as HTMLElement | null)
         : null;
+      if (!scroller || scroller.scrollHeight <= scroller.clientHeight + 8) {
+        const vis = [...document.querySelectorAll('[style*="visibility: visible"]')].find(
+          (el) => el.children.length && el.getBoundingClientRect().width > 100 && el.getBoundingClientRect().height > 100
+        );
+        scroller = vis
+          ? ([...vis.querySelectorAll("[class*='overflow-y-auto']")] as HTMLElement[]).find(
+              (el) => el.scrollHeight > el.clientHeight + 8
+            ) ?? null
+          : null;
+      }
       if (scroller && scroller.scrollHeight > scroller.clientHeight + 8) {
         const atBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 8;
         const atTop = scroller.scrollTop <= 8;
-        if (e.deltaY > 0 && !atBottom) return;
-        if (e.deltaY < 0 && !atTop) return;
+        const canDown = e.deltaY > 0 && !atBottom;
+        const canUp = e.deltaY < 0 && !atTop;
+        if (canDown || canUp) {
+          e.preventDefault();
+          scroller.scrollTop += e.deltaY;
+          return;
+        }
       }
+      // 无内部滚动（或已到边界）→ 切换界面
       if (e.deltaY > 0) next("ribbon");
       else prev("axe");
     };
@@ -137,7 +153,7 @@ export function Deck({ children }: { children: ReactNode }) {
       if (dy < 0) next("ribbon");
       else prev("axe");
     };
-    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchend", onTouchEnd, { passive: true });
     return () => {
