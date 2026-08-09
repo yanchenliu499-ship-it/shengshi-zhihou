@@ -96,7 +96,7 @@ export default function HomePage() {
         <Hero />
 
         {/* ============ 屏 1 · 研究问题 ============ */}
-        <Screen num="01" title="研究问题">
+        <Screen num="01" title="研究问题" pattern="cloud">
           <div className="mx-auto max-w-[760px] space-y-5">
             <div className="relative overflow-hidden rounded-2xl p-6 text-center shadow-[0_8px_32px_rgba(139,26,26,0.28)] md:p-8"
               style={{ background: "radial-gradient(ellipse at 50% 0%, #9d2a2a 0%, #7d1717 55%, #5e0f0f 100%)", border: "1px solid rgba(184,134,11,0.45)" }}>
@@ -126,6 +126,7 @@ export default function HomePage() {
         <Screen
           num="02"
           title="情感分析"
+          pattern="vine"
           subtitle="444 首安史之乱诗歌整体呈消极基调（消极 57.4%、平均情感 −0.160）；四时期无显著差异，穆宗—文宗却一反常态——消极降至四时期最低、积极升至最高"
         >
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -152,6 +153,7 @@ export default function HomePage() {
         <Screen
           num="03"
           title="主题与话语"
+          pattern="meander"
           subtitle="四时期分别建模（K=5，经困惑度与 UMass 一致性双指标检验），20 个主题呈现清晰的历时演变：前期以战争创伤与制度反思为核心，后期转向文化记忆与历史典故化"
         >
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -183,7 +185,7 @@ export default function HomePage() {
         </Screen>
 
         {/* ============ 屏 4 · 四阶段演变（深色） ============ */}
-        <Screen num="04" title="四阶段演变" dark subtitle="将中晚唐历史划分为四个时期，追踪安史之乱叙事的代际演变——从战争创伤到历史典故化">
+        <Screen num="04" title="四阶段演变" dark pattern="rosette" subtitle="将中晚唐历史划分为四个时期，追踪安史之乱叙事的代际演变——从战争创伤到历史典故化">
           <Timeline />
           <div className="mt-6 rounded-2xl border border-white/10 bg-[#14110c] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.35)] md:p-5">
             <h3 className="font-heading text-lg font-bold text-[#f7f4ec] md:text-xl">悬停查看各时期词云</h3>
@@ -196,6 +198,7 @@ export default function HomePage() {
         <Screen
           num="05"
           title="未完成的中兴"
+          pattern="cloud"
           subtitle="55 首含「中兴」诗作构成独特子语料库：肃宗—代宗 15 首 → 德宗—宪宗骤降至 2 首 → 穆宗—文宗回升 8 首 → 武宗—哀帝激增至 24 首——王朝将亡，呼唤愈发迫切，却始终未成"
         >
           <ZhongxingSection />
@@ -205,18 +208,19 @@ export default function HomePage() {
         <Screen
           num="06"
           title="从战争到宫闱"
+          pattern="lozenge"
           subtitle="穆宗—文宗时期情感曲线一反常态：消极占比降至四时期最低、积极占比升至最高；宫闱词取代战争词——衰亡叙事由外患内移为朝纲与君德之思"
         >
           <PalaceTurn />
         </Screen>
 
         {/* ============ 屏 7 · 文本探索器 ============ */}
-        <Screen num="07" title="文本探索器" subtitle="逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索">
+        <Screen num="07" title="文本探索器" pattern="vine" subtitle="逐条浏览标注后的唐代文献片段，按时期、态度筛选或自由检索">
           <TextExplorerGuide />
         </Screen>
 
         {/* ============ 屏 8 · 研究方法 ============ */}
-        <Screen num="08" title="研究方法" subtitle="语料预处理 → 时期编年 → 主题建模 → 归因检测 → 双方法情感分析 → 关键词流变追踪">
+        <Screen num="08" title="研究方法" pattern="meander" subtitle="语料预处理 → 时期编年 → 主题建模 → 归因检测 → 双方法情感分析 → 关键词流变追踪">
           <div className="mx-auto max-w-[880px]">
             {METHODS.map((m, i) => (
               <div key={m.title} className="flex items-start gap-4 border-b border-line/50 py-5 last:border-b-0 md:gap-6">
@@ -236,7 +240,7 @@ export default function HomePage() {
         </Screen>
 
         {/* ============ 屏 9 · 结语 ============ */}
-        <Screen num="09" title="结语" dark showNext={false} subtitle="安史之乱主题的《全唐诗》诗歌整体呈消极情感基调；贯穿始终的「中兴」「太平」「天子」寄托着希望，消极词汇却前后剧变——唐人四十余年呼唤中兴，终唐之世未再复兴，中晚唐诗中的「中兴」，始终是未完成的期待。">
+        <Screen num="09" title="结语" dark pattern="rosette" showNext={false} subtitle="安史之乱主题的《全唐诗》诗歌整体呈消极情感基调；贯穿始终的「中兴」「太平」「天子」寄托着希望，消极词汇却前后剧变——唐人四十余年呼唤中兴，终唐之世未再复兴，中晚唐诗中的「中兴」，始终是未完成的期待。">
           <div className="flex w-full max-w-[600px] flex-1 flex-col items-center justify-center gap-6">
             <div className="flex w-full flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
               <div className="font-heading text-lg font-bold text-white">刘彦辰</div>

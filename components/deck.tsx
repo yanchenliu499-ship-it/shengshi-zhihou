@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { goWithTransition, type TransitionMode } from "@/components/tang-transition";
+import { TangPattern, type TangMotif } from "@/components/tang-pattern";
 
 interface DeckContextValue {
   index: number;
@@ -190,6 +191,7 @@ export function Screen({
   title,
   subtitle,
   dark = false,
+  pattern,
   children,
   nextLabel = "下一屏",
   showNext = true,
@@ -199,6 +201,7 @@ export function Screen({
   title?: string;
   subtitle?: string;
   dark?: boolean;
+  pattern?: TangMotif;
   children: ReactNode;
   nextLabel?: string;
   showNext?: boolean;
@@ -212,7 +215,8 @@ export function Screen({
         dark ? "bg-[#101010] text-white" : "bg-paper text-ink"
       }`}
     >
-      <div className="mx-auto flex min-h-full w-full max-w-[1200px] flex-col px-4 py-8 md:px-6 md:py-10">
+      {pattern && <TangPattern motif={pattern} dark={dark} />}
+      <div className="relative mx-auto flex min-h-full w-full max-w-[1200px] flex-col px-4 py-8 md:px-6 md:py-10">
         {title && (
           <header className="mb-6 shrink-0 text-center md:mb-8">
             {num && (
