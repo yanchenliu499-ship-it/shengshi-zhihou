@@ -241,3 +241,94 @@ export const METHOD_ICONS = {
   SentimentIcon,
   ArchaeologyIcon,
 };
+
+/* ============================================================
+ * 转场用唐代纹样：宝相花纹 / 兵戈 / 敦煌飘带
+ * ============================================================ */
+
+/* 宝相花纹（对称团花，可旋转展开） */
+export function BaoxiangFlower({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 120" fill="none" className={className} aria-hidden="true">
+      {/* 外圈放射线 */}
+      {Array.from({ length: 12 }).map((_, i) => (
+        <line
+          key={i}
+          x1="60" y1="7" x2="60" y2="20"
+          stroke="currentColor" strokeWidth="1"
+          transform={`rotate(${i * 30} 60 60)`}
+          opacity="0.8"
+        />
+      ))}
+      {/* 中层 8 片花瓣 */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <path
+          key={i}
+          d="M60 16 C69 32 72 44 60 58 C48 44 51 32 60 16 Z"
+          stroke="currentColor" strokeWidth="1.3"
+          transform={`rotate(${i * 45} 60 60)`}
+        />
+      ))}
+      {/* 内层 8 片小花瓣（错位） */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <path
+          key={`in${i}`}
+          d="M60 34 C66 44 67 50 60 57 C53 50 54 44 60 34 Z"
+          stroke="currentColor" strokeWidth="1"
+          transform={`rotate(${i * 45 + 22.5} 60 60)`}
+          opacity="0.85"
+        />
+      ))}
+      {/* 中心 */}
+      <circle cx="60" cy="60" r="6.5" stroke="currentColor" strokeWidth="1.3" />
+      <circle cx="60" cy="60" r="2.2" fill="currentColor" />
+      {/* 花心小点 */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <circle
+          key={`d${i}`}
+          cx="60" cy="52" r="1.1"
+          fill="currentColor"
+          transform={`rotate(${i * 45} 60 60)`}
+          opacity="0.9"
+        />
+      ))}
+    </svg>
+  );
+}
+
+/* 兵戈（戈：横刃 + 竖柄） */
+export function DaggerAxe({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 60" fill="none" className={className} aria-hidden="true">
+      {/* 横刃 */}
+      <path d="M6 36 L30 20 L54 36" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      {/* 竖柄 */}
+      <path d="M30 20 L30 54" stroke="currentColor" strokeWidth="2" />
+      <path d="M30 12 L30 20" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
+      {/* 矛头 */}
+      <path d="M30 6 L34 13 L26 13 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+      {/* 缨饰 */}
+      <path d="M20 26 C26 28 26 30 20 32" stroke="currentColor" strokeWidth="1" opacity="0.7" />
+      <path d="M40 26 C34 28 34 30 40 32" stroke="currentColor" strokeWidth="1" opacity="0.7" />
+    </svg>
+  );
+}
+
+/* 敦煌飘带（飞天乐舞飘带曲线） */
+export function DunhuangRibbon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 40" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 20 C18 6 30 32 44 18 C58 4 66 30 80 16 C92 4 100 28 116 14"
+        stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.85"
+      />
+      <path
+        d="M8 26 C20 14 32 38 46 24 C58 12 68 34 82 22 C94 12 102 32 116 20"
+        stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.5"
+      />
+      {/* 飘带末端小圆点（乐舞铃饰） */}
+      <circle cx="116" cy="14" r="2" fill="currentColor" opacity="0.8" />
+      <circle cx="4" cy="20" r="1.6" fill="currentColor" opacity="0.8" />
+    </svg>
+  );
+}
