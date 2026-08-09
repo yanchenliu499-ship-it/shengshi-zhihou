@@ -15,7 +15,7 @@ const HERO_STATS = [
   { number: "171", label: "情感词" },
 ];
 
-/** 固定于首屏下方的「向下探索」按钮（Monumoir Wake-a-Statue 风格） */
+/** 固定于首屏下方的「向下探索」按钮 */
 function ScrollHintButton() {
   const { scrollTo } = useLenis();
   const [hidden, setHidden] = useState(false);
@@ -88,7 +88,7 @@ export function Hero() {
       <div className="relative z-10 flex w-full max-w-[1000px] flex-col items-center">
         <ScrollReveal>
           <span className="inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-[0.25em] text-[#AA967E]">
-            IDHFUS 2026 · 赛道一
+            唐代文献 · 数字人文研究
           </span>
         </ScrollReveal>
 
