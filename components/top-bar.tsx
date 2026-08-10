@@ -95,9 +95,12 @@ export function TopBar() {
             type="button"
             aria-label={open ? "关闭菜单" : "打开菜单"}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-black/5"
+            className="group flex h-12 w-[76px] flex-col items-center justify-center gap-1 rounded-full px-1 text-ink transition-colors hover:bg-black/5"
           >
             {open ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+            <span className="whitespace-nowrap rounded-full bg-[#faf7f2]/85 px-1.5 py-0.5 text-[10px] font-medium leading-none tracking-wider text-ink/75 shadow-sm backdrop-blur-sm transition-colors group-hover:text-ink">
+              {open ? "关闭菜单" : "点击查看目录"}
+            </span>
           </button>
         </div>
       </div>
