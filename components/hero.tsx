@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useDeck } from "@/components/deck";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ArrowDownIcon } from "@/components/icons";
 import { BrushTitle } from "@/components/originkit/brush-title";
-import { TornadoBackdrop } from "@/components/originkit/tornado-backdrop";
-import { CloudScroll, MountainScene, SealStamp } from "@/components/ornaments";
+import { SealStamp } from "@/components/ornaments";
+import { PaperTheater } from "@/components/paper-theater";
 
 const HERO_STATS = [
   { number: "444", label: "全唐诗文本" },
@@ -23,60 +22,23 @@ function EnterButton() {
       type="button"
       aria-label="进入研究"
       onClick={() => next("baoxiang")}
-      className="group absolute inset-x-0 bottom-[96px] z-[12] mx-auto flex w-fit cursor-pointer flex-col items-center gap-1.5 border-0 bg-transparent p-2 transition-opacity duration-500 ease-out hover:opacity-90"
+      className="group absolute inset-x-0 bottom-[96px] z-[12] mx-auto flex w-fit cursor-pointer flex-col items-center gap-1.5 border-0 bg-transparent p-2 transition-opacity duration-500 ease-out hover:opacity-80"
     >
-      <span className="text-xs font-light tracking-[0.25em] text-white/75">进入研究</span>
-      <ArrowDownIcon className="h-4 w-4 text-white/75 animate-bounce-soft transition-transform group-hover:translate-y-0.5" />
+      <span className="text-xs font-light tracking-[0.25em] text-ink-soft">进入研究</span>
+      <ArrowDownIcon className="h-4 w-4 text-ink-soft animate-bounce-soft transition-transform group-hover:translate-y-0.5" />
     </button>
   );
 }
 
 export function Hero() {
-  const [parallax, setParallax] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setParallax(Math.min(window.scrollY * 0.22, 140));
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-night px-4 pb-24 pt-20 text-center">
-      {/* 粒子龙卷氛围背景（金色 + 朱砂红，网站配色） */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-70" aria-hidden="true">
-        <TornadoBackdrop />
+    <header className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-paper px-4 pb-24 pt-20 text-center">
+      {/* 纸剧场：九件唐代元件的交互纵深场景（浅色宣纸封面） */}
+      <div className="absolute inset-0 z-0">
+        <PaperTheater />
       </div>
 
-      {/* 深色渐变 + 宣纸纹理 */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 22% 40%, rgba(139,26,26,0.16) 0%, transparent 55%), radial-gradient(ellipse at 78% 60%, rgba(184,134,11,0.10) 0%, transparent 55%)",
-        }}
-        aria-hidden="true"
-      />
-      <div className="paper-grain pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
-
-      {/* 水墨山峦剪影（底部，滚动视差） */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 will-change-transform"
-        style={{ transform: `translateY(${parallax}px)` }}
-        aria-hidden="true"
-      >
-        <MountainScene className="h-[200px] w-full md:h-[280px]" />
-      </div>
-
-      {/* 祥云纹（角落点缀） */}
-      <div className="pointer-events-none absolute left-[5%] top-[16%] z-0 text-white/15 md:left-[10%]" aria-hidden="true">
-        <CloudScroll className="h-10 w-20 md:h-14 md:w-28" />
-      </div>
-      <div className="pointer-events-none absolute right-[6%] top-[12%] z-0 rotate-12 text-white/10" aria-hidden="true">
-        <CloudScroll className="h-8 w-16 md:h-12 md:w-24" />
-      </div>
-
-      <div className="relative z-10 flex w-full max-w-[1000px] flex-col items-center">
+      <div className="pointer-events-none relative z-10 flex w-full max-w-[1000px] flex-col items-center">
         <ScrollReveal delay={120}>
           <div
             role="heading"
@@ -84,13 +46,13 @@ export function Hero() {
             aria-label="盛世之后"
             className="mt-8 flex w-full justify-center"
           >
-            <BrushTitle text="盛世之后" dark size="hero" />
+            <BrushTitle text="盛世之后" dark={false} size="hero" />
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={240}>
           <div className="mt-4 flex items-center justify-center gap-3">
-            <p className="font-heading text-xl font-medium text-[#c44d4d] sm:text-2xl md:text-3xl">
+            <p className="font-heading text-xl font-medium text-accent sm:text-2xl md:text-3xl">
               唐人视野中的王朝衰亡
             </p>
             <SealStamp
@@ -102,7 +64,7 @@ export function Hero() {
         </ScrollReveal>
 
         <ScrollReveal delay={360}>
-          <p className="mt-8 max-w-[680px] text-[15px] font-light leading-[1.9] text-white/65 md:text-base">
+          <p className="mt-8 max-w-[680px] text-[15px] font-light leading-[1.9] text-ink-soft md:text-base">
             中晚唐的皇帝制敕、大臣奏状与文人文集中，反复出现「兵兴以来」「天宝以来」的追忆——安史之乱作为重大转折被反复提及。
             <br className="hidden md:block" />
             但唐人自己如何认知这场变乱？本网站以《全唐诗》444 首安史之乱题材诗歌为量化语料，
@@ -115,10 +77,10 @@ export function Hero() {
           <div className="flex items-start gap-7 sm:gap-10 md:gap-16">
             {HERO_STATS.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-heading text-3xl font-black text-[#c44d4d] sm:text-4xl md:text-5xl">
+                <div className="font-heading text-3xl font-black text-accent sm:text-4xl md:text-5xl">
                   {s.number}
                 </div>
-                <div className="mt-1 text-[11px] font-light tracking-wider text-white/50 md:text-xs">
+                <div className="mt-1 text-[11px] font-light tracking-wider text-ink-muted md:text-xs">
                   {s.label}
                 </div>
               </div>
