@@ -4,6 +4,7 @@ import { BASE_PATH } from "@/lib/data";
 import "./globals.css";
 import { LenisProvider } from "@/components/lenis-provider";
 import { AmbientSound } from "@/components/ambient-sound";
+import { Analytics } from "@vercel/analytics/next";
 
 const notoSerif = Noto_Serif_SC({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body>
         <LenisProvider>{children}</LenisProvider>
         <AmbientSound />
+        <Analytics />
       </body>
     </html>
   );
